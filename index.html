@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Reeplay</title>
+          <link rel="preload" href="img/home_bg.jpg" as="image">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Core Css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+
+        <!-- =====Multiple google fonts=== -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit|Oswald|Poppins|Roboto" />
+        <!-- ====Font Awesome=== -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+        <!-- =====Build Tel=-= -->
+        <link rel="stylesheet" type="text/css" href="build/css/intlTelInput.css" />
+        <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+        <!-- Video Player=== -->
+        <link rel="stylesheet" type="text/css" href="css/videostyle.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <style>
+            .donaite_live {
+                display: none !important;
+            }
+            @media (max-width: 992px) {
+                .profile_manu {
+                    right: 40%;
+                    top: 55%;
+                }
+            }
+            @media (max-width: 768px) {
+                .header_content {
+                    padding: 0px 30px;
+                    padding-right: 0px;
+                    bottom: 55vh;
+                }
+                .ss_cols {
+                    margin-top: 30px;
+                }
+                .movp_heading {
+                    font-size: 30px;
+                }
+                .movp_pera {
+                    font-size: 15px;
+                }
+                .mp_btn {
+                    font-size: 9px;
+                    padding: 5px 3px;
+                }
+                .video_prev_dis {
+                    font-size: 11px;
+                }
+                .white_strs img {
+                    width: 180px;
+                }
+                .price_btn_vid {
+                    padding: 15px 50px;
+                    justify-content: center;
+                }
+                .mp_fixheigt {
+                    overflow-x: hidden;
+                }
+                .giv_rating_area {
+                    width: unset;
+                }
+                .give_rating_left {
+                    padding-top: 0px;
+                }
+                .give_rating_right {
+                    padding-top: 0px;
+                }
+            }
+            @media (max-width: 580px) {
+                .header p {
+                    width: unset;
+                }
+            }
+            @media (max-width: 1024px) {
+                .header_content {
+                    bottom: 45vh;
+                }
+                .header h1 {
+                    font-size: 70px;
+                }
+                .header h2 {
+                    font-size: 38px;
+                }
+            }
+            @media (max-width: 542px) {
+                .header h1 {
+                    font-size: 52px;
+                }
+                .header h2 {
+                    font-size: 30px;
+                }
+                .header p {
+                    font-size: 16px;
+                }
+                .right_arrow {
+                    margin-right: 0px;
+                }
+                .Left_arrow {
+                    margin-left: 0px;
+                }
+                .boxx2 {
+                    width: 190px;
+                    height: 300px;
+                }
+                #back-to-top-btn {
+                    right: 7px;
+                }
+            }
+            @media (max-width: 425px) {
+                .header_content {
+                    bottom: 15vh;
+                    padding: 0px 0px;
+                }
+                .profile_manu {
+                    right: 35%;
+                    top: 53%;
+                }
+            } /*Bg video*/
+            #bgVideo {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -0.1; /* This is important to position the video behind the other content */
+                pointer-events: none;
+            }
+            #bgVideo::before,
+            #bgVideo::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 20%;
+            }
+            #bgVideo::before {
+                height: 133px;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.84) 5.21%, transparent);
+                padding: 0px 0px;
+                margin: 0px;
+                z-index: 100000;
+            }
+            #bgVideo::after {
+                bottom: 0;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.84) 5.21%, transparent);
+                z-index: 100000;
+            }
+            .video_container .video_player {
+                width: unset;
+                height: unset;
+            }
+            .fullvideo_container .video_player {
+                width: unset;
+                height: unset;
+            }
+            @media (min-width: 992px) {
+                .modal-lg,
+                .modal-xl {
+                    max-width: 100vw;
+                }
+                .mid_modals_content {
+                    width: 830px;
+                    max-height: 1703px;
+                }
+            }
+            @media (min-width: 430px) and (max-width: 992px) {
+                .modal-dialog {
+                    max-width: 100vw;
+                    margin: 1.75rem auto;
+                }
+                .mid_modals_content {
+                    max-width: 85%;
+                }
+                .fullvideo_container {
+                    width: 85vw;
+                }
+            }
+            @media (max-width: 768px) {
+                .film_big {
+                    font-size: 16px;
+                }
+                .red_noti_big {
+                    width: 19px;
+                    margin-top: -3px;
+                    margin-right: 2px;
+                }
+                .upcoming_watch_popup {
+                    max-width: 100%;
+                }
+                .see_upcoming_p1 {
+                    margin-top: 20px;
+                }
+                .casts {
+                    margin-left: 20px;
+                }
+                .upcoming_see_hr {
+                    margin: 0px;
+                }
+                .upcom_buynowadd {
+                    left: 73%;
+                    top: 70%;
+                }
+                .see_upcoming_p1,
+                .see_upcoming_p2 {
+                    font-size: 15px;
+                }
+                .above_icon {
+                    width: 20px;
+                }
+                .boxx5 {
+                    width: 160.64px;
+                    height: 250.17px;
+                }
+                .price_btn_vid {
+                    display: flex;
+                }
+                .price_btn_vid img {
+                    width: 30px;
+                }
+                .season_vd_discrib {
+                    font-size: 11px;
+                }
+                .vd_season_icons {
+                    margin: 3px;
+                }
+                .season_headings {
+                    margin-top: 0px;
+                }
+                .vd_epsodes-lable {
+                    margin-left: 20px;
+                }
+                .select_seasons_vd {
+                    font-size: 18px;
+                }
+                .video_container .video_player .videocontrols {
+                    padding: 0px;
+                }
+                .fullvideo_container .video_player .videocontrols {
+                    padding: 0px;
+                }
+                .fullvideo_container {
+                    width: 90vw;
+                }
+            }
+            .header_content {
+                z-index: 2;
+            }
+            .header_content_right {
+                display: flex;
+                display: none;
+                position: absolute;
+                right: 3%;
+                bottom: 39%;
+                z-index: 5;
+            }
+            .header_content_right img {
+                cursor: pointer;
+                margin-right: 3px;
+                width: 18px;
+            }
+            .header_greate_btn {
+                background: none;
+                color: white;
+                border: 1px solid #ffffff;
+                border-radius: 4px;
+                padding: 3px 15px;
+                margin-left: 10px;
+                font-weight: 400;
+                font-size: 9px;
+                line-height: 11px;
+                font-family: "Outfit";
+                cursor: pointer;
+            }
+ .border-none{
+ 	border: none;
+ }	
+
+
+        </style>
+ 
+    </head>
+    <body>
+              <!-- Preloader -->
+        <div id="preloader">
+  <img src="img/loader.gif" alt="Preloader" />
+</div>
+
+<div id="websiteContent">
+        <!-- =========================Nav & Header==============\ -->
+        <div class="home_startup">
+            <div class="navbar_areaa">&nbsp;</div>
+            <!-- ====Nav=== -->
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                <div class="container-fluid filuid_sm">
+                    <a class="navbar-brand" href="index.html"><img src="img/loogo.png" class="logo" /></a>
+                    <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon" style="background-image: url('img/manue.svg')!important"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link activenav" aria-current="page" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="live.html">Live</a></li>
+                            <li class="nav-item"><a class="nav-link" href="upcoming.html">Upcoming</a></li>
+                            <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target=".my_watchlist" href="Watchlist">Watchlist</a></li>
+                        </ul>
+                        <form class="d-flex">
+                            <img src="img/search.svg" class="search_icon" id="search_icon" onclick="show_search()" />
+                            <span class="search_area" id="search_area">
+                                <button class="sbtn"><img src="img/search.svg" id="searchImage" class="search_input_btn" /></button> <input type="text" name="search" class="search_input" placeholder="Titles, people, genres" />
+                            </span>
+                        </form>
+                        <a href="#" class="signup_btn none_sm" data-toggle="modal" data-target=".signup-popup">Sign Up</a>
+                        <a href="#" class="signup_btn for_sm smsigningonly" data-toggle="modal" data-target=".siging_sm_popup" >Sign In</a>
+                        <!-- -- -->
+                    </div>
+                </div>
+            </nav>
+            <!-- ====End Nav=== --><!-- ===Header==== -->
+            <header class="header">
+                <!-- row -->
+                <div class="row">
+                    <!-- left side -->
+                    <div class="col-lg-6 col-md-8 col-12">
+                        <div class="header_content">
+
+                            <h1>STAR WALKERS <div class="for_sm"><div class="header_content_right1"><img src="img/mute.png" class="rheader_icon1" onclick="myValume1()" /></div></div></h1>
+                            <h2 id="sub_heading_c">THE RISE OF SKYWALKER</h2>
+                            <p id="sub_heading_p">The surviving members of the resistance face the First Order once again, and the legendary conflict between the Jedi and the Sith reaches its peak bringing the Skywalker saga to its end.</p>
+                            <!-- stars -->
+                            <div class="header_starts"><img src="img/strs.svg" /></div>
+                            <!-- Buttons -->
+                            <div class="header_buttons">
+                                <button class="watch_now_btn" data-toggle="modal" data-target="view_movie"><img src="img/vd_cion.svg" />Watch Now</button>
+                                <button class="header_info_btn" data-toggle="modal" data-target=".hmovie_preview"><img src="img/i.svg" />Info</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-12">
+                        <div class="none_sm">
+                        <div class="header_content_right"><img src="img/mute.png" class="rheader_icon" onclick="myValume()" />
+                         <button class="header_greate_btn">18+</button></div></div></div>
+                    </div>
+                
+            </header>
+            <!-- ===End Header=== -->
+            <div class="hero_bottom_shadow">&nbsp;</div>
+            <!-- bg video -->
+            <div class="video-container">
+            <video autoplay muted plays-inline id="bgVideo"><source src="img/bgvideo.mp4" type="video/mp4" /></video>
+        </div>
+        </div>
+        <!-- video -->
+        <section class="full_width_video" id="full_widthvideo">
+            <div class="fullvideo_container">
+                <div class="video_player" style="position: relative;">
+                    <button type="button" class="popup_close_btnv" data-mdb-dismiss="modal"><img src="img/vclose.svg" class="img-fluid poup_close_iconV vdeostop-close s_screen active2" onclick="colosefullVmodals()" /></button>
+                    <div class="text-white overrited_onvid">
+                        <p class="mb-0 p_on_vplayer">Star Walker</p>
+                        <img src="img/s_screen.svg" class="s_screen wf_vicon" />
+                    </div>
+                    <video preload="metadata" class="main-video main-fullvideo" poster="img/movie_preview.png">
+                        <source src="img/video.mp4" size="480" type="video/mp4" />
+                        <track label="English" kind="subtitles" src="./How To Get Started With VSCode.vtt" srclang="en" />
+                        <track label="Urdu" kind="subtitles" src="./test.vtt" srclang="en" />
+                    </video>
+                </div>
+            </div>
+        </section>
+        <!-- End Video --><!-- End Video --><!-- ================Popukar on Reeplay=========== -->
+        <div class="popular_on_replay">
+            <div class="row popular_top">
+                <div class="col-lg-6 col-md-6 col-8"><h2 class="trending_heading popular_heading">Popular On Reeplay</h2></div>
+                <div class="col-lg-6 col-md-6 col-4 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles"><span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span></div>
+                </div>
+            </div>
+            <div class="popular_area">
+                <img src="img/right_arrow.svg" class="Left_arrow" id="pre_img" />
+                <div class="popular_slide_area">
+                    <div class="container_area container_area2">
+                        <!-- Scrolling -->
+                        <div class="containr">
+                            <div class="boxx"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                            <div class="boxx"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                            <div class="boxx"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                            <div class="boxx"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                            <div class="boxx"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                            <div class="boxx"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                            <div class="boxx"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                            <div class="boxx"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                            <div class="boxx"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                        </div>
+                    </div>
+                    <!-- End Scrolling -->
+                </div>
+                <img src="img/right_arrow.svg" class="right_arrow" id="next_img" />
+            </div>
+        </div>
+        <br />
+        <!-- =========================Tranding Now===== -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Trending Now</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets1">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_1">
+                    <div class="boxx2"><img src="img/m5.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m1.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m2.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m6.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m1.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid scroll-on-hover" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================TOP 10 Nigeria========= -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Top 10 Nigeria</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets2 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area2 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_2">
+                    <div class="boxx2">
+                        <img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">01</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">02</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">03</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">04</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">05</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">06</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">07</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">08</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">09</div>
+                    </div>
+                    <div class="boxx2">
+                        <img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="top-ng_lable">10</div>
+                    </div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================Countinue Watching========= -->
+        <div class="trending_now_aarea countinue_watching my-div" onscroll="handleScroll()">
+            <h2 class="trending_heading pl-2">Continue Watching</h2>
+            <div class="Trending_area">
+                <!-- Scrolling -->
+                <div class="containr">
+                    <div class="boxx3"><img src="img/watching1.png" class="img-fluid countinue_watchingimg" alt="Responsive image" /><img src="img/close.svg" class="close_btnicon" /></div>
+                    <div class="boxx3"><img src="img/watching2.png" class="img-fluid countinue_watchingimg" alt="Responsive image" /><img src="img/close.svg" class="close_btnicon" /></div>
+                    <div class="boxx3"><img src="img/watching3.png" class="img-fluid countinue_watchingimg" alt="Responsive image" /><img src="img/close.svg" class="close_btnicon" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================New Music Videos========= -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">New Music Videos</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets3 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area3 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_3">
+                    <div class="boxx2"><img src="img/music5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                    <div class="boxx2"><img src="img/music1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                    <div class="boxx2"><img src="img/music2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                    <div class="boxx2"><img src="img/music3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                    <div class="boxx2"><img src="img/music4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                    <div class="boxx2"><img src="img/music5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                    <div class="boxx2"><img src="img/music1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                    <div class="boxx2"><img src="img/music2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                    <div class="boxx2"><img src="img/music3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hmusic_preview" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================Kids & Cartons========= -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Kids & Cartons</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets4 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area4 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_4">
+                    <div class="boxx2"><img src="img/kids5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/kids1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/kids2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/kids3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/kids4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/kids5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/kids1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/kids2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/kids3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================Suggested For You========= -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Suggested For You</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets5 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area5 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_5">
+                    <div class="boxx2"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================Live Channels========= -->
+        <div class="trending_now_aarea countinue_watching">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Live Channels</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets6 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area6 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_6">
+                    <div class="boxx4">
+                        <img src="img/live3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="video_icons">
+                            <img src="img/vd_cion.svg" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                            <p>ARISE NEWS</p>
+                        </div>
+                        <div class="live_lable">LIVE</div>
+                    </div>
+                    <div class="boxx4">
+                        <img src="img/live1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="video_icons">
+                            <img src="img/vd_cion.svg" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                            <p>ARISE NEWS</p>
+                        </div>
+                        <div class="live_lable">LIVE</div>
+                    </div>
+                    <div class="boxx4">
+                        <img src="img/live2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="video_icons">
+                            <img src="img/vd_cion.svg" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                            <p>ARISE NEWS</p>
+                        </div>
+                        <div class="live_lable">LIVE</div>
+                    </div>
+                    <div class="boxx4">
+                        <img src="img/live3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="video_icons">
+                            <img src="img/vd_cion.svg" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                            <p>ARISE NEWS</p>
+                        </div>
+                        <div class="live_lable">LIVE</div>
+                    </div>
+                    <div class="boxx4">
+                        <img src="img/live1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                        <div class="video_icons">
+                            <img src="img/vd_cion.svg" data-toggle="modal" data-target=".bd-example-modal11-lg" />
+                            <p>ARISE NEWS</p>
+                        </div>
+                        <div class="live_lable">LIVE</div>
+                    </div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================Throw Back Music Videos========= -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Throw Back Music Videos</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets7 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area7 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_7">
+                    <div class="boxx2"><img src="img/music5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/music1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/music2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/music3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/music4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/music5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/music1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/music2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/music3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================Documentries========= -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Documentries</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets8 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area8 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_8">
+                    <div class="boxx2"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================Coming Soon========= -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Coming Soon</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets9 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area9 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_9">
+                    <div class="boxx2"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- =================Series========= -->
+        <div class="trending_now_aarea">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-6"><h2 class="trending_heading">Series</h2></div>
+                <div class="col-lg-6 col-md-6 col-6 bulles_col">
+                    <!-- ===buples=== -->
+                    <div class="bulles bplets10 bullets">
+                        <span class="bulles_item bulles_item1 active_bulles">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                        <span class="bulles_item">&nbsp;</span> <span class="bulles_item">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Trending_area Trending_area9 my-div" onscroll="handleScroll()">
+                <!-- Scrolling -->
+                <div class="containr ssrol_10">
+                    <div class="boxx2"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                    <div class="boxx2"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                    <div class="boxx2"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                    <div class="boxx2"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                    <div class="boxx2"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                    <div class="boxx2"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                    <div class="boxx2"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview" /></div>
+                </div>
+                <!-- End Scrolling -->
+            </div>
+        </div>
+        <!-- ===Scroll Up Btn=== -->
+        <button id="back-to-top-btn" title="Back to top"><img src="img/right_arrow.svg" /></button>
+        <!-- =========================All POPUPs Start===================== --><!-- ====Signup Start=== --><!-- ============================================================== -->
+        <div class="modal fade signup-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupsignup">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_signupa()" /></button>
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo" /></center>
+                    <p class="login_pera">
+                        Create an Account<br />
+                        and Start Watching your<br />
+                        Favorite Movies.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="text" name="name" class="login_inputs" placeholder="Full Name" />
+                            <p class="mb-3"></p>
+                            <input type="tel" id="phone-number" pattern="[0-9]*" class="login_inputs intl-tel-input contact_input" /><input type="Email" name="name" class="login_inputs" placeholder="Email" />
+                            <div style="position: relative;"><input type="password" name="passsword" class="login_inputs" placeholder="Password" required="" name="password" id="password2" /><img src="img/aye.svg" id="eye-icon2" /></div>
+                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" class="sinup_checkbox" /> <label for="vehicle1" class="lable_signup">Receive promotion emails</label>
+                            <button type="submit" class="log_in_btn sinup_btn" onclick="close_signupa()" data-toggle="modal" data-target=".verify_phone">Create an Account</button>
+                            <a href="#" class="reset_pass" onclick="close_signupa()" data-toggle="modal" data-target=".siging-popup">Login</a>
+                            <p class="aske_to_reset">If you already have a Reeplay Account</p>
+                        </form>
+                    </center>
+                    <!-- ====End signup Form=== -->
+                </div>
+            </div>
+        </div>
+        <!-- ====Sign Up PopupEnd== --><!-- ================================================================ --><!-- =====================Verify Phone No======= --><!-- ============================================================== -->
+        <div class="modal fade verify_phone" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupverifyphone">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_popupverifyphone()" /></button>
+                    <div class="phone_vf_areaa">
+                        <h4>Verify PHONE NUMBER</h4>
+                        <br />
+                        <input type="password" name="vf_code" placeholder="*** - ***" class="pfv_code_input" /><input type="button" value="Send Code" class="pfv_code_btn" />
+                        <button type="submit" class="log_in_btn verify_pass_btn" onclick="close_popupverifyphone()" data-toggle="modal" data-target=".verify_done">Verify</button> <br />
+                        <p class="text-white code_expiry">Code expires in 10 minuites</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===================End Verify Phone No====== --><!-- =============================================================== --><!-- ==============Verifcation SuccessFulll STR============= --><!-- =============================================================== -->
+        <div class="modal fade verify_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupverifdone">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_verifydone()" /></button>
+                    <div class="phone_vf_areaa verifydone">
+                        <img src="img/v_done.png" class="verifdon_png" />
+                        <h4>
+                            Verification<br />
+                            Successful
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===================End Verify Successfull====== --><!-- =============================================================== --><!-- ====Login Start=== --><!-- ============================================================== -->
+        <div class="modal fade siging-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupsignin">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_signin()" /></button>
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo" /></center>
+                    <p class="login_pera">
+                        Login to Watch the Action,<br />
+                        and Live Shows from your<br />
+                        Favorite Stars.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="Email" name="name" class="login_inputs login-in mt-2" placeholder="Email" />
+                            <div style="position: relative;">
+                                <input type="password" name="passsword" class="login_inputs login-in mt-3" placeholder="Password" required="" name="password" id="password1" /><img src="img/aye.svg" id="eye-icon1" />
+                            </div>
+                            <br />
+                            <button type="submit" class="log_in_btn sinup_btn login-btn mt-0">Login</button> <button type="submit" class="log_in_btn sinup_btn login-btn signupbtn">Create a New Account</button>
+                            <p class="aske_to_reset pb-0">Forgot your Password?</p>
+                            <a href="#" class="reset_pass pt-2" onclick="close_signin()" data-toggle="modal" data-target=".reset_passpop">Reset it</a>
+                        </form>
+                    </center>
+                    <!-- ====End signup Form=== -->
+                </div>
+            </div>
+        </div>
+        <!-- ====Login Popup End== --><!-- ================================================================ --><!-- Reset Pass PopUp==== --><!-- =========================================================== -->
+        <div class="modal fade reset_passpop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupreset">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_resetpop()" /></button>
+                    <!-- ======Reset Pass=== -->
+                    <div class="resetpass_area">
+                        <h4>Reset your Password</h4>
+                        <center>
+                            <form>
+                                <input type="Email" name="name" class="login_inputs login-in" placeholder="Email" /><br />
+                                <button type="button" class="log_in_btn sinup_btn login-btn" onclick="close_resetpop()" data-toggle="modal" data-target=".reset_done">Reset Password</button>
+                            </form>
+                        </center>
+                    </div>
+                    <!-- ====End Reset === -->
+                </div>
+            </div>
+        </div>
+        <!-- ================End Reset POPUP========= --><!-- ============================================================= --><!-- ===========================RESET DONE STR============== -->
+        <div class="modal fade reset_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="resetdonepop">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_resetdone()" /></button>
+                    <div class="phone_vf_areaa verifydone">
+                        <img src="img/v_done.png" class="verifdon_png" />
+                        <h4>
+                            Password reset link<br />
+                            was sent to your email
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================END RESET DONE============= --><!-- =============================================================== --><!-- ========================Profile Lock Start========= --><!-- =============================================================== -->
+        <div class="modal fade profile_lock" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="profilelockpop">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_profilelock()" /></button>
+                    <!-- Main -->
+                    <div class="lock_profile_area">
+                        <p class="pfl_p1">Welcome back <b>Edward</b></p>
+                        <p class="pfl_p2">Use pin to continue.</p>
+                        <!-- ==Inputs== -->
+                    </div>
+                    <div class="otp-container">
+                        <input type="text" class="otp-input" maxlength="1" id="otp1" oninput="moveToNext(this, 'otp2')" onkeydown="moveToPrev(event, 'otp1', 'otp2')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp2" oninput="moveToNext(this, 'otp3')" onkeydown="moveToPrev(event, 'otp2', 'otp3')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp3" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(event, 'otp3', 'otp4')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp4" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(event, 'otp4', 'otp4')" />
+                    </div>
+                    <!-- End Inputs -->
+                    <center><hr class="pfl_hr" /></center>
+                    <a href="#" class="pfl_porgot text-center">Forgot PIN?</a>
+                    <!-- End Main -->
+                </div>
+            </div>
+        </div>
+        <!-- ========================Profile Lock End===== --><!-- ============================================================== --><!-- Dailog and subscribe btns -->
+        <a href="#" class="popups_hiden_btns" id="mydailogbtn" data-toggle="modal" data-target=".dailog_pop" data-backdrop="static">dailog</a>
+        <!-- sm dailog -->
+        <a href="#" class="popups_hiden_btns" id="smdailogbtn" data-toggle="modal" data-target=".aler_sm_login" data-backdrop="static">dailog</a>
+        <!-- ============================================================== --><!-- ==================Dailog POP Start================ -->
+        <div class="modal fade dailog_pop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="dailogpopup">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_dailogpop()" /></button>
+                    <!-- ===Main Area=== -->
+                    <div class="dailog_pop_area">
+                        <img src="img/biglogo.png" />
+                        <p class="dailpgpop1">You are not signed in.</p>
+                        <p class="dailpgpop2">
+                            Sign in or Register to enjoy<br />
+                            Premium Content on all your<br />
+                            devices.
+                        </p>
+                        <div class="dailog_pop_btns">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12 mt-2"><button class="sign_in_dailog" onclick="close_dailogpop()" data-toggle="modal" data-target=".siging-popup">Sign In</button></div>
+                                <div class="col-lg-6 col-md-6 col-12 mt-2"><button class="sign_up_dailog" onclick="close_dailogpop()" data-toggle="modal" data-target=".signup-popup">Register</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ===End Main Area==== -->
+                </div>
+            </div>
+        </div>
+        <!-- ========================End Dailog POP==== --><!-- =============================================================== --><!-- =======================Premium Popup====== --><!-- ============================================================ -->
+        <div class="modal fade premium_pop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="premiumpopup" style="z-index: 10000;">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_premiumpop()" /></button>
+                    <!-- ===Main Area=== -->
+                    <div class="dailog_pop_area">
+                        <img src="img/biglogo.png" />
+                        <p class="dailpgpop1">
+                            You don’t have an active <br />
+                            subscription
+                        </p>
+                        <p class="dailpgpop2">
+                            This is a Premium content, you<br />
+                            must subscribe to watch.
+                        </p>
+                        <div class="dailog_pop_btns subscribebtn"><button class="sign_up_dailog" onclick="close_premiumpop()">Subscribe</button></div>
+                    </div>
+                    <!-- ===End Main Area==== -->
+                </div>
+            </div>
+        </div>
+        <!-- ==========End Premium Popup===== --><!-- =========================================================== --><!-- =======================Preview Popups============== --><!--==================== Movie Preview PoPUp================== -->
+        <div class="modal fade hmovie_preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupk8" data-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content movie_preview mid_modals_content">
+                    <!-- Video -->
+                    <!-- video -->
+                    <section>
+                        <div class="video_container">
+                            <div class="video_player" style="position: relative;">
+                                <button type="button" class="popup_close_btnv" data-mdb-dismiss="modal"><img src="img/vclose.svg" class="img-fluid poup_close_iconV vdeostop-close s_screen active2" onclick="coloseVmodals()" /></button>
+                                <div class="text-white overrited_onvid">
+                                    <p class="mb-0 p_on_vplayer">Star Walker</p>
+                                    <img src="img/s_screen.svg" class="s_screen wf_vicon" />
+                                </div>
+                                <video preload="metadata" class="main-video ac_video" poster="img/movie_preview.png">
+                                    <source src="img/video.mp4" size="480" type="video/mp4" />
+                                    <track label="English" kind="subtitles" src="./How To Get Started With VSCode.vtt" srclang="en" />
+                                    <track label="Urdu" kind="subtitles" src="./test.vtt" srclang="en" />
+                                </video>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End Video --><!-- ====Row== -->
+                    <div class="">
+                        <div class="row vprew_content1">
+                            <div class="col-lg-2 col-md-2 col-2 text-center p-0"><img src="img/playlist_sm.svg" class="vpre_playlist_ic" /></div>
+                            <div class="col-lg-8 col-md-8 col-8">
+                                <h2 class="movp_heading">STAR WALKERS</h2>
+                                <p class="movp_pera">Comedy ~ Exciting ~ Drama</p>
+                                <!-- ===row== -->
+                                <div class="row video_prv_detalsd">
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr" onclick="add_rating()">
+                                        <p class="first_col_pera">375K+ VIEWS</p>
+                                        <h4 class="first_col_time">4.0</h4>
+                                        <div class="prevideo_rating"><img src="img/overall_rating.svg" /></div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr">
+                                        <p class="first_col_pera">PG</p>
+                                        <h4 class="first_col_time">12+</h4>
+                                        <p class="first_col_pera2">Years Old</p>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr ss_cols" id="show_comments1">
+                                        <p class="first_col_pera">COMMENTS</p>
+                                        <h4 class="first_col_time">98+</h4>
+                                        <p class="first_col_pera2">Tap to Add</p>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr first_col_nob ss_cols">
+                                        <p class="first_col_pera">DURATION</p>
+                                        <h4 class="first_col_time">1h : 7m</h4>
+                                        <p class="first_col_pera2">2021</p>
+                                    </div>
+                                </div>
+                                <div id="default_preview1">
+                                    <h6 class="text-center film_heaing">FILM</h6>
+                                    <p class="video_prev_dis">
+                                        Not more than 200 characters allowed here.<br />
+                                        What do viewers get when the incredible acting talents<br />
+                                        of Nancy Isime and Ini Dima-Okojie are featured in a<br />
+                                        film or series? Simple; blockbuster.
+                                    </p>
+                                    <!-- ===row=== -->
+                                    <div class="row giv_rating_vd">
+                                        <div class="col-lg-2 col-md-2 col-1 p-0"><img src="img/up-arrow.svg" /></div>
+                                        <div class="col-lg-8 col-md-8 col-10 white_strs hide_for_rate">
+                                            <img src="img/rating_strs.svg" />
+                                            <p class="text-center p-2 tab-to-rat" onclick="add_rating()">Tap to Rate</p>
+                                            <button class="price_btn_vid" data-toggle="modal" data-target=".exclusiv_pro">₦300.00</button>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-1 p-0"><img src="img/down-arrow.svg" id="dowtow_arrow" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-2 p-0"><a href="#" class="btn vdc_btn mp_btn" data-toggle="modal" data-target=".exclusiv_pro">EXCLUSIVE</a></div>
+                        </div>
+                        <!-- ============Give Rating===== -->
+                        <div class="giv_rating_area" id="giv_rating_area">
+                            <p class="give_rating_heading">Give Rating</p>
+                            <div class="row add_rating_row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="give_rating_left">
+                                        <span class="rating_lavel">4.0</span><span class="toatal_rate">/5</span><br />
+                                        <img src="img/rateds.svg" />
+                                        <p class="reviews_counts">275K+ VOTES</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="give_rating_right">
+                                        <span class="rating_plable">5 &nbsp;</span> <progress value="80" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">4 &nbsp;</span> <progress value="60" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">3 &nbsp;</span> <progress value="35" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">2 &nbsp;</span> <progress value="25" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">1 &nbsp;</span> <progress value="7" max="100" class="ratimg_progresbar"></progress><br />
+                                        <br />
+                                        <!-- ===add Rating stars== -->
+                                        <div class="add_rating_area">
+                                            <div class="giveus_rate">
+                                                <input type="radio" id="star5" name="rate" value="5" /> <label for="star5" title="text">5 stars</label> <input type="radio" id="star4" name="rate" value="4" />
+                                                <label for="star4" title="text">4 stars</label> <input type="radio" id="star3" name="rate" value="3" /> <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate" value="2" /> <label for="star2" title="text">2 stars</label> <input type="radio" id="star1" name="rate" value="1" />
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                            <button class="adding_rate_btn1" onclick="cancel_rating()">Cancel</button>&nbsp; <button class="adding_rate_btn2">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ===End Give Rating=== --><!-- ====Hr=== -->
+                        <hr class="upcoming_see_hr hide_for_rate" id="default_preview4" />
+                        <!-- =====Vd_casts_row==== -->
+                        <div class="mp_fixheigt hide_for_rate" id="default_preview2">
+                            <!-- ====Casts=== -->
+                            <h5 class="casts">CASTS & CREW</h5>
+                            <div class="">
+                                <div class="row casts_area_row">
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_1.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Richard Moffat</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_2.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Rita Dominic</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_3.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Mike Ezuronye</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_4.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Genivieve Nnaji</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_5.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Eddels Bette</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_1.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Richard Moffat</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_2.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Rita Dominic</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_3.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Mike Ezuronye</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_4.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Genivieve Nnaji</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4 p-0">
+                                        <div class="card costs_cards upcoming_casts_cards">
+                                            <img class="card-img-top" src="img/cast_5.png" alt="COSTS" />
+                                            <div class="casts_card_bodys"><h6 class="card-title casts_name">Eddels Bette</h6></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="upcoming_see_hr mt-3 mb-3" />
+                            <div class="upcoming_related_div mt-0" id="default_preview3">
+                                <h5 class="casts mb-0">RELATED MOVIES</h5>
+                                <div class="Trending_area related_movies">
+                                    <!-- Scrolling -->
+                                    <div class="containr">
+                                        <div class="boxx5"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                    </div>
+                                    <!-- End Scrolling -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ======Comment area start==== --><!-- ====Comment Area -->
+                        <div id="comment_area1" class="comments_div">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-12"></div>
+                                <div class="col-lg-8 col-md-8 col-12">
+                                    <div class="container">
+                                        <p class="count_comments">68 Comments</p>
+                                        <img src="img/commenter1.png" class="comment_pf" /> <input type="text" name="comment" class="comment_input" placeholder="Write a Comment" />
+                                        <!-- ===Hr== -->
+                                        <center><hr class="hr_vd_line2" /></center>
+                                    </div>
+                                    <!-- Comments --><!-- 1 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">2 Sisters set out to Impress the World in a thrilling show of Bravery and Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Rita Dominic &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">29</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 2 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter3.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- comment reply -->
+                                    <div class="row reply_on_comments">
+                                        <div class="col-lg-2 col-md-2 col-12 p-0"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-9 col-md-9 col-12 p-0">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Bette &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 3 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter4.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 4 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter5.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 5 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter6.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- comment reply -->
+                                    <div class="row reply_on_comments">
+                                        <div class="col-lg-2 col-md-2 col-12 p-0"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-9 col-md-9 col-12 p-0">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Bette &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <button type="button" class="close_comments_btn" id="close_comments1">Close</button><br />
+                                    <br />
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-12"></div>
+                            </div>
+                        </div>
+                        <!-- =====End comment area======= -->
+                        <div class="addon_movipre">
+                            <img src="img/upcoming-add.png" width="100%" class="upcoming_add mt-0" /><span class="add_lable_live" style="left: 4%;">AD</span><span class="add_lable_live upcom_buynowadd">Buy Now</span>
+                        </div>
+                        <div class="close_btin"><button class="close_upcom_btn vdeostop-close" data-mdb-dismiss="modal" onclick="coloseVmodals()">Close</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ======================END Movie Preview============= --><!--==================== Series PoPUp================== -->
+        <div class="modal fade hseries_preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupk8" data-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content movie_preview mid_modals_content">
+                    <!-- video -->
+                    <section>
+                        <div class="video_container">
+                            <div class="video_player" style="position: relative;">
+                                <button type="button" class="popup_close_btnv" data-mdb-dismiss="modal"><img src="img/vclose.svg" class="img-fluid poup_close_iconV vdeostop-close s_screen active2" onclick="coloseVmodals1()" /></button>
+                                <div class="text-white overrited_onvid">
+                                    <p class="mb-0 p_on_vplayer">S1: E2 “Star Walker”</p>
+                                    <img src="img/s_screen.svg" class="s_screen wf_vicon" />
+                                </div>
+                                <video preload="metadata" class="main-video main-video2" poster="img/movie_preview.png">
+                                    <source src="img/video.mp4" size="480" type="video/mp4" />
+                                    <track label="English" kind="subtitles" src="./How To Get Started With VSCode.vtt" srclang="en" />
+                                    <track label="Urdu" kind="subtitles" src="./test.vtt" srclang="en" />
+                                </video>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End Video --><!-- ====Row== -->
+                    <div class="">
+                        <div class="row vprew_content1">
+                            <div class="col-lg-2 col-md-2 col-1 text-center"><img src="img/playlist_sm.svg" class="vpre_playlist_ic" /></div>
+                            <div class="col-lg-8 col-md-8 col-10">
+                                <h2 class="movp_heading">MUMMY SOLDIER</h2>
+                                <p class="movp_pera">Action ~ Suspense ~ Tragedy</p>
+                                <!-- ===row== -->
+                                <div class="row video_prv_detalsd">
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr" onclick="add_rating()">
+                                        <p class="first_col_pera">375K+ VIEWS</p>
+                                        <h4 class="first_col_time">4.0</h4>
+                                        <div class="prevideo_rating"><img src="img/overall_rating.svg" /></div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr">
+                                        <p class="first_col_pera">PG</p>
+                                        <h4 class="first_col_time">12+</h4>
+                                        <p class="first_col_pera2">Years Old</p>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr ss_cols" id="show_comments2">
+                                        <p class="first_col_pera">COMMENTS</p>
+                                        <h4 class="first_col_time">98+</h4>
+                                        <p class="first_col_pera2">Tap to Add</p>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr first_col_nob ss_cols">
+                                        <p class="first_col_pera">DURATION</p>
+                                        <h4 class="first_col_time">1h : 7m</h4>
+                                        <p class="first_col_pera2">2021</p>
+                                    </div>
+                                </div>
+                                <div id="default_series1">
+                                    <h6 class="text-center film_heaing">TV SERIES</h6>
+                                    <p class="video_prev_dis">
+                                        Not more than 200 characters allowed here.<br />
+                                        What do viewers get when the incredible acting talents<br />
+                                        of Nancy Isime and Ini Dima-Okojie are featured in a<br />
+                                        film or series? Simple; blockbuster.
+                                    </p>
+                                    <!-- ===row=== -->
+                                    <div class="row giv_rating_vd">
+                                        <div class="col-lg-2 col-md-2 col-2"><img src="img/up-arrow.svg" /></div>
+                                        <div class="col-lg-8 col-md-8 col-8 white_strs hide_for_rate">
+                                            <img src="img/rating_strs.svg" />
+                                            <p class="text-center p-2 tab-to-rat" onclick="add_rating()">Tap to Rate</p>
+                                            <button class="price_btn_vid" data-toggle="modal" data-target=".premium_pop"><img src="img/Polygon.svg" width="30px" /> Watch</button>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-2"><button class="series_premium_btn" data-toggle="modal" data-target=".premium_pop">PREMIUM</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-1"></div>
+                        </div>
+                        <!-- ============Give Rating===== -->
+                        <div class="giv_rating_area" id="giv_rating_area">
+                            <p class="give_rating_heading">Give Rating</p>
+                            <div class="row add_rating_row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="give_rating_left">
+                                        <span class="rating_lavel">4.0</span><span class="toatal_rate">/5</span><br />
+                                        <img src="img/rateds.svg" />
+                                        <p class="reviews_counts">275K+ VOTES</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="give_rating_right">
+                                        <span class="rating_plable">5 &nbsp;</span> <progress value="80" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">4 &nbsp;</span> <progress value="60" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">3 &nbsp;</span> <progress value="35" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">2 &nbsp;</span> <progress value="25" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">1 &nbsp;</span> <progress value="7" max="100" class="ratimg_progresbar"></progress><br />
+                                        <br />
+                                        <!-- ===add Rating stars== -->
+                                        <div class="add_rating_area">
+                                            <div class="giveus_rate">
+                                                <input type="radio" id="star5" name="rate" value="5" /> <label for="star5" title="text">5 stars</label> <input type="radio" id="star4" name="rate" value="4" />
+                                                <label for="star4" title="text">4 stars</label> <input type="radio" id="star3" name="rate" value="3" /> <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate" value="2" /> <label for="star2" title="text">2 stars</label> <input type="radio" id="star1" name="rate" value="1" />
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                            <button class="adding_rate_btn1" onclick="cancel_rating()">Cancel</button>&nbsp; <button class="adding_rate_btn2">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ===End Give Rating=== --><!-- ====Hr=== -->
+                        <hr class="upcoming_see_hr hide_for_rate" id="default_series4" />
+                        <!-- =====Vd_casts_row==== -->
+                        <div class="mp_fixheigt hide_for_rate" id="default_series2">
+                            <!-- =======Episodes row=== -->
+                            <div class="container seasons_contatine">
+                                <p class="vd_epsodes-lable">EPISODES</p>
+                                <select class="select_seasons_vd">
+                                    <option>Season 1</option>
+                                    <option>Season 2</option>
+                                    <option>Season 3</option>
+                                    <option>Season 4</option>
+                                </select>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-5 col-5 p-0"><img src="img/seasons.png" class="seasons_videos" /></div>
+                                    <div class="col-lg-5 col-md-5 col-6">
+                                        <h5 class="season_headings">1. Introduction</h5>
+                                        <p class="season_vd_discrib">Not more than 120 characters allowed.Two Sisters set out to Impress the World in an interesting & thrilling show of Bravery yet Comedic Trickery.</p>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-1 p-0"><img src="img/down-arrow.svg" class="vd_season_icons" /></div>
+                                </div>
+                                <br />
+                                <br />
+                                <!-- ==Row 2== -->
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-5 col-5 p-0"><img src="img/seasons.png" class="seasons_videos" /></div>
+                                    <div class="col-lg-5 col-md-5 col-6">
+                                        <h5 class="season_headings">2. Introduction</h5>
+                                        <p class="season_vd_discrib">Not more than 120 characters allowed.Two Sisters set out to Impress the World in an interesting & thrilling show of Bravery</p>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-1 p-0"><img src="img/down-arrow.svg" class="vd_season_icons" /></div>
+                                </div>
+                                <br />
+                                <br />
+                                <!-- ===Row 3== -->
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-5 col-5 p-0"><img src="img/seasons.png" class="seasons_videos" /></div>
+                                    <div class="col-lg-5 col-md-5 col-6">
+                                        <h5 class="season_headings">3. Introduction</h5>
+                                        <p class="season_vd_discrib">Not more than 120 characters allowed.Two Sisters set out to Impress the World in an interesting & thrilling show of Bravery yet Comedic Trickery.</p>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-1 p-0"><img src="img/down-arrow.svg" class="vd_season_icons" /></div>
+                                </div>
+                                <br />
+                                <hr class="upcoming_see_hr mt-3 mb-3" />
+                                <!-- ====Casts=== -->
+                                <h5 class="casts">CASTS & CREW</h5>
+                                <div class="">
+                                    <div class="row casts_area_row">
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_1.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Richard Moffat</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_2.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Rita Dominic</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_3.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Mike Ezuronye</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_4.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Genivieve Nnaji</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_5.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Eddels Bette</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_1.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Richard Moffat</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_2.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Rita Dominic</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_3.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Mike Ezuronye</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_4.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Genivieve Nnaji</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-4 p-0">
+                                            <div class="card costs_cards upcoming_casts_cards">
+                                                <img class="card-img-top" src="img/cast_5.png" alt="COSTS" />
+                                                <div class="casts_card_bodys"><h6 class="card-title casts_name">Eddels Bette</h6></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="upcoming_see_hr mt-3 mb-3" />
+                                <div class="upcoming_related_div mt-0" id="default_series3">
+                                    <h5 class="casts mb-0">RELATED MOVIES</h5>
+                                    <div class="Trending_area related_movies">
+                                        <!-- Scrolling -->
+                                        <div class="containr">
+                                            <div class="boxx5"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                            <div class="boxx5"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                            <div class="boxx5"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                            <div class="boxx5"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                            <div class="boxx5"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                            <div class="boxx5"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                            <div class="boxx5"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                            <div class="boxx5"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                            <div class="boxx5"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        </div>
+                                        <!-- End Scrolling -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ======Comment area start==== --><!-- ====Comment Area -->
+                        <div id="comment_area2" class="comments_div">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-12"></div>
+                                <div class="col-lg-8 col-md-8 col-12">
+                                    <div class="container">
+                                        <p class="count_comments">68 Comments</p>
+                                        <img src="img/commenter1.png" class="comment_pf" /> <input type="text" name="comment" class="comment_input" placeholder="Write a Comment" />
+                                        <!-- ===Hr== -->
+                                        <center><hr class="hr_vd_line2" /></center>
+                                    </div>
+                                    <!-- Comments --><!-- 1 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">2 Sisters set out to Impress the World in a thrilling show of Bravery and Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Rita Dominic &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">29</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 2 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter3.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- comment reply -->
+                                    <div class="row reply_on_comments">
+                                        <div class="col-lg-2 col-md-2 col-12 p-0"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-9 col-md-9 col-12 p-0">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Bette &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 3 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter4.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 4 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter5.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 5 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter6.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- comment reply -->
+                                    <div class="row reply_on_comments">
+                                        <div class="col-lg-2 col-md-2 col-12 p-0"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-9 col-md-9 col-12 p-0">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Bette &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <button type="button" class="close_comments_btn" id="close_comments1">Close</button><br />
+                                    <br />
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-12"></div>
+                            </div>
+                        </div>
+                        <!-- =====End comment area======= -->
+                    </div>
+                    <div class="addon_movipre">
+                        <img src="img/upcoming-add.png" width="100%" class="upcoming_add mt-0" /><span class="add_lable_live" style="left: 4%;">AD</span><span class="add_lable_live upcom_buynowadd">Buy Now</span>
+                    </div>
+                    <div class="close_btin"><button data-mdb-dismiss="modal" class="close_upcom_btn vdeostop-close" onclick="coloseVmodals1()">Close</button></div>
+                </div>
+            </div>
+        </div>
+        <!-- ======================END Series Pop============= --><!--==================== Music Preview PoPUp================== -->
+        <div class="modal fade hmusic_preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupk8" data-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content movie_preview mid_modals_content">
+                    <!-- video -->
+                    <section>
+                        <div class="video_container">
+                            <div class="video_player" style="position: relative;">
+                                <button type="button" class="popup_close_btnv" data-mdb-dismiss="modal"><img src="img/vclose.svg" class="img-fluid poup_close_iconV vdeostop-close s_screen active2" onclick="coloseVmodals2()" /></button>
+                                <div class="text-white overrited_onvid">
+                                    <p class="mb-0 p_on_vplayer">Star Walker</p>
+                                    <img src="img/s_screen.svg" class="s_screen wf_vicon" />
+                                </div>
+                                <video preload="metadata" class="main-video main-video3" poster="img/music_preview.png">
+                                    <source src="img/video.mp4" size="480" type="video/mp4" />
+                                    <track label="English" kind="subtitles" src="./How To Get Started With VSCode.vtt" srclang="en" />
+                                    <track label="Urdu" kind="subtitles" src="./test.vtt" srclang="en" />
+                                </video>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End Video --><!-- ====Row== -->
+                    <div class="">
+                        <div class="row vprew_content1">
+                            <div class="col-lg-2 col-md-2 col-2 text-center"><img src="img/playlist_sm.svg" class="vpre_playlist_ic" /></div>
+                            <div class="col-lg-8 col-md-8 col-8">
+                                <h2 class="movp_heading">LIKE</h2>
+                                <p class="movp_pera">Iyanya x Davido x Kizz Daniel</p>
+                                <!-- ===row== -->
+                                <div class="row video_prv_detalsd">
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr" onclick="add_rating()">
+                                        <p class="first_col_pera">375K+ VIEWS</p>
+                                        <h4 class="first_col_time">4.0</h4>
+                                        <div class="prevideo_rating"><img src="img/overall_rating.svg" /></div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr">
+                                        <p class="first_col_pera">PG</p>
+                                        <h4 class="first_col_time">18+</h4>
+                                        <p class="first_col_pera2">Years Old</p>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr ss_cols" id="show_musiccomments1">
+                                        <p class="first_col_pera">COMMENTS</p>
+                                        <h4 class="first_col_time">298+</h4>
+                                        <p class="first_col_pera2">Tap to Add</p>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-6 first_col_pr first_col_nob ss_cols">
+                                        <p class="first_col_pera">DURATION</p>
+                                        <h4 class="first_col_time">4m</h4>
+                                        <p class="first_col_pera2">2022</p>
+                                    </div>
+                                </div>
+                                <div id="default_music1">
+                                    <h6 class="text-center film_heaing">MUSIC VIDEO</h6>
+                                    <p class="video_prev_dis">
+                                        Not more than 200 characters allowed here.<br />
+                                        What do viewers get when the incredible acting talents<br />
+                                        of Nancy Isime and Ini Dima-Okojie are featured in a<br />
+                                        film or series? Simple; blockbuster.
+                                    </p>
+                                    <!-- ===row=== -->
+                                    <div class="row giv_rating_vd">
+                                        <div class="col-lg-2 col-md-2 col-1 p-0"><img src="img/up-arrow.svg" /></div>
+                                        <div class="col-lg-8 col-md-8 col-10 white_strs hide_for_rate">
+                                            <img src="img/rating_strs.svg" />
+                                            <p class="text-center p-2 tab-to-rat" onclick="add_rating()">Tap to Rate</p>
+                                            <button class="price_btn_vid" data-toggle="modal" data-target=".exclusiv_pro"><img src="img/Polygon.svg" width="30px" /> Watch</button>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-1 p-0"><img src="img/down-arrow.svg" id="dowone_arrow" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-2"><a href="#" class="btn vdc_btn free_btn">FREE</a></div>
+                        </div>
+                        <!-- ============Give Rating===== -->
+                        <div class="giv_rating_area" id="giv_rating_area">
+                            <p class="give_rating_heading">Give Rating</p>
+                            <div class="row add_rating_row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="give_rating_left">
+                                        <span class="rating_lavel">4.0</span><span class="toatal_rate">/5</span><br />
+                                        <img src="img/rateds.svg" />
+                                        <p class="reviews_counts">275K+ VOTES</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="give_rating_right">
+                                        <span class="rating_plable">5 &nbsp;</span> <progress value="80" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">4 &nbsp;</span> <progress value="60" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">3 &nbsp;</span> <progress value="35" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">2 &nbsp;</span> <progress value="25" max="100" class="ratimg_progresbar"></progress><br />
+                                        <span class="rating_plable">1 &nbsp;</span> <progress value="7" max="100" class="ratimg_progresbar"></progress><br />
+                                        <br />
+                                        <!-- ===add Rating stars== -->
+                                        <div class="add_rating_area">
+                                            <div class="giveus_rate">
+                                                <input type="radio" id="star5" name="rate" value="5" /> <label for="star5" title="text">5 stars</label> <input type="radio" id="star4" name="rate" value="4" />
+                                                <label for="star4" title="text">4 stars</label> <input type="radio" id="star3" name="rate" value="3" /> <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate" value="2" /> <label for="star2" title="text">2 stars</label> <input type="radio" id="star1" name="rate" value="1" />
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                            <button class="adding_rate_btn1" onclick="cancel_rating()">Cancel</button>&nbsp; <button class="adding_rate_btn2">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ===End Give Rating=== --><!-- ====Hr=== -->
+                        <hr class="upcoming_see_hr" id="default_music4" />
+                        <!-- =====Vd_casts_row==== -->
+                        <div id="default_music2" class="hide_for_rate">
+                            <div class="upcoming_related_div mt-0" id="default_music3">
+                                <h5 class="casts mb-0">RELATED MUSIC VIDEOS</h5>
+                                <div class="Trending_area related_movies">
+                                    <!-- Scrolling -->
+                                    <div class="containr">
+                                        <div class="boxx5"><img src="img/music1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/music2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/music3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/music4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/music5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/music1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/music2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/music3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                        <div class="boxx5"><img src="img/music4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg" /></div>
+                                    </div>
+                                    <!-- End Scrolling -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ======Comment area start==== --><!-- ====Comment Area -->
+                        <div id="musiccomment_area" class="comments_div">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-12"></div>
+                                <div class="col-lg-8 col-md-8 col-12">
+                                    <div class="container">
+                                        <p class="count_comments">68 Comments</p>
+                                        <img src="img/commenter1.png" class="comment_pf" /> <input type="text" name="comment" class="comment_input" placeholder="Write a Comment" />
+                                        <!-- ===Hr== -->
+                                        <center><hr class="hr_vd_line2" /></center>
+                                    </div>
+                                    <!-- Comments --><!-- 1 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">2 Sisters set out to Impress the World in a thrilling show of Bravery and Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Rita Dominic &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">29</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 2 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter3.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- comment reply -->
+                                    <div class="row reply_on_comments">
+                                        <div class="col-lg-2 col-md-2 col-12 p-0"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-9 col-md-9 col-12 p-0">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Bette &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 3 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter4.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 4 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter5.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- 5 -->
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-12"><img src="img/commenter6.png" width="50px" /></div>
+                                        <div class="col-lg-10 col-md-10 col-12">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery.You gotta see this girrrls. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">RMD &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <!-- comment reply -->
+                                    <div class="row reply_on_comments">
+                                        <div class="col-lg-2 col-md-2 col-12 p-0"><img src="img/commenter2.png" width="50px" /></div>
+                                        <div class="col-lg-9 col-md-9 col-12 p-0">
+                                            <p class="commented">Thrilling show of Bravery and a true Comedic Trickery. <span class="com_rep">More</span></p>
+                                            <p class="commenter_name">Bette &nbsp;&nbsp;&nbsp;<span class="comment_time">1 hour ago</span></p>
+                                            <div class="comments_actions">
+                                                <span class="comments_likes"><img src="img/like.svg" class="comented_icons" /><span class="like_on_comments">30</span></span>
+                                                <span class="comments_likes com_rep"><img src="img/comment.svg" class="comented_icons2" />Reply</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-lg-2 col-md-2 col-12"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =====End comment area======= -->
+                        <div class="addon_movipre">
+                            <img src="img/upcoming-add.png" width="100%" class="upcoming_add mt-0" /><span class="add_lable_live" style="left: 4%;">AD</span><span class="add_lable_live upcom_buynowadd">Buy Now</span>
+                        </div>
+                        <div class="close_btin"><button class="close_upcom_btn vdeostop-close" data-mdb-dismiss="modal" onclick="coloseVmodals2()">Close</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ======================END MMusic Preview============= --><!-- ==================EXclusive PRO========== -->
+        <div class="modal fade exclusiv_pro" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="exclusiv_pro">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_exclusiv_pro()" /></button>
+                    <!-- ====Main======== -->
+                    <div class="choose_pay_method_area">
+                        <!-- logo -->
+                        <img src="img/biglogo.png" class="big_logo_onPopup" />
+                        <p class="exclusive_pera">
+                            Sorry ths is Content is not free.<br />
+                            <br />
+                            This is an Exclusive content, you<br />
+                            must purchase to watch.
+                        </p>
+                        <button class="exclusive_pay_btn">₦300</button><br />
+                        <button class="exclusive_ad_btn">Watch trailer</button>
+                    </div>
+                    <!-- =========End Main===== -->
+                </div>
+            </div>
+        </div>
+        <!-- END EXCLUSIve Pro=========== --><!-- Watchlist modal -->
+        <div class="modal fade my_watchlist" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mywatchlistpo">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal logn_modals" style="background: rgba(36, 36, 36, 0.9); height: unset;">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon2" onclick="close_watchlistpop()" /></button>
+                    <div class="container">
+                        <div class="row mt-3"><h6 class="dawoloads_heading watchlist_heading">My Watchlist</h6></div>
+                    </div>
+                    <!-- ======Watchlist=== -->
+                    <div class="dawoload_popup_area container waatchlist_area">
+                        <!-- ===row 1== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                        </div>
+                        <!-- ===row 2== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                        </div>
+                        <!-- ===row 3== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                        </div>
+                        <!-- ===row 4== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                        </div>
+                        <!-- ===row 5== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                        </div>
+                        <!-- ===row 6== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                        </div>
+                        <!-- ===row 7== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                        </div>
+                        <!-- ===row 8== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                        </div>
+                    </div>
+                    <!-- =====AD== -->
+                    <div class="long_add_area"><img src="img/dawonload_ads.png" class="long_adds" /><span class="add_lable_live lng_add">AD</span></div>
+                    <!-- ===Buttons== -->
+                    <div class="dawoloading_lst_btns buy_adsc_btns">
+                        <button class="dawoloading_lst_btn1 buy_now_add">Buy Now</button>
+                        <center><hr class="dbtn_hr buyadd_hr" /></center>
+                        <button class="dawoloading_lst_btn2 buy_add_closebtn" onclick="close_watchlistpop()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!-- ==================EDN Open account in app -->
+<p href="account_view" data-toggle="modal" data-target=".opn_app_content" id="viewapp_conntent_btn" style="display:none;"></p>
+<!-- Oen Content in app -->
+<div class="modal fade opn_app_content smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="appcontent">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+<!-- content -->
+<div class="opne_c_app">
+  <img src="img/pop.jpg" class="open_capp_img">  
+  <p class="app_ac_pera">To watch Reeplay on your mobile,<br>
+click button below to open with app.</p>
+<button class="watch_now_btn opne_inapp_c appbtn" id="appbtn1"><img src="img/vd_cion.svg" />Open App</button><br>
+<p class="app_ac_close contentcsmbnt" onclick="close_appc_con()">close</p>
+</div>
+
+<!-- End content -->
+</div>
+</div>
+</div>
+
+<!-- ========= login alert on mobile phone======= -->
+<div class="modal fade aler_sm_login smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="smalertlogin">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+
+<!-- Mian content -->
+<div class="main_login_alert">
+    <img src="img/biglogo.png">
+    <p class="aler_santence">You are not signed in.</p>
+    <p class="aler_santence2">Sign in or Register to enjoy <br>
+Premium Content on all your <br>
+devices.</p>
+<a onclick="close_smallert()" data-toggle="modal" data-target=".siging_sm_popup">
+<button class="watch_now_btn">Sign In</button></a><br>
+<p class="app_ac_close" onclick="close_smallert()">close</p>
+
+</div>
+<!-- end -->
+</div>
+</div>
+</div>
+<!-- ===========End login Alert on mobile -->
+
+<!-- ==============login popup on sm=========== -->
+<div class="modal fade siging_sm_popup smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="smlogin">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+<!-- main contant -->
+<div class="login_sm_div">
+
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo usedforsm_biglogo" /></center>
+                    <p class="login_pera">
+                        Login to Watch the Action,<br />
+                        and Live Shows from your<br />
+                        Favorite Stars.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="Email" name="name" class="login_inputs login-in mt-2" placeholder="Email" />
+                            <div style="position: relative;">
+                                <input type="password" name="passsword" class="login_inputs login-in mt-3" placeholder="Password" required="" name="password" id="password3" /><img src="img/aye.svg" id="eye-icon3" />
+                            </div>
+                            <br />
+                            <button type="submit" class="log_in_btn sinup_btn login-btn mt-0">Login</button> <button type="button" class="log_in_btn sinup_btn login-btn signupbtn appbtn" id="appbtn2">Create a New Account</button>
+                            <p class="aske_to_reset pb-0">Forgot your Password?</p>
+                            <a class="reset_pass pt-2 appbtn" id="appbtn3">Reset it</a>
+                        </form>
+                        <p class="app_ac_close pb-0" onclick="close_smlogin()">close</p>
+                    </center>
+                    <!-- ====End signup Form=== -->
+</div>
+<!-- end main content -->
+</div>
+</div>
+</div>
+<!-- ===========End login popup========== -->
+        <!-- =========================End All Popups======================== --><!-- Bootstrap Js -->
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+        <!-- Build For Tel=== -->
+        <script src="build/js/intlTelInput.js"></script>
+        <!-- -====Video Player=== -->
+        <script src="js/videoscript.js"></script>
+        <script src="js/smjs.js"></script>
+        <!-- Core Js -->
+        <script src="js/script.js"></script>
+        <script src="js/home.js"></script>
+    </div>
+    <script>$('.small_modals').on('show.bs.modal', function () {
+  $('body').addClass('modal-open');
+});
+
+$('.small_modals').on('hidden.bs.modal', function () {
+  $('body').removeClass('modal-open');
+});
+
+</script>
+        </body>
+</html>

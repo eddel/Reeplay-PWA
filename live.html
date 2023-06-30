@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Reeplay</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Core Css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css?v=2" />
+        <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+        <!-- =====Multiple google fonts=== -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit|Oswald|Poppins|Roboto" />
+        <!-- ====Font Awesome=== -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+        <!-- =====Build Tel=-= -->
+        <link rel="stylesheet" type="text/css" href="build/css/intlTelInput.css" />
+        <!-- Video Player=== -->
+        <link rel="stylesheet" type="text/css" href="css/videostyle.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+        <style>
+            .card {
+                position: relative !important;
+                z-index: 1 !important;
+            }
+            .chooese_method_modal {
+                z-index: 3;
+            }
+            .full_width_video {
+                z-index: 2;
+                pointer-events: unset;
+            }
+            .overrited_onvid {
+                left: 5%;
+                width: 89%;
+            }
+            .watch_now {
+                cursor: pointer;
+            }
+            .live_addwlist {
+                cursor: pointer;
+            }
+            .minus_margin_for_lives {
+                margin-top: -88px;
+                position: relative;
+                z-index: 0;
+            }
+            .livep_cards {
+                max-height: 221px;
+            }
+            .hidden-video {
+                display: none;
+            }
+            .live_event_cols {
+                width: 335px;
+            }
+            @media (max-width: 890px) {
+                .video_container .video_player {
+                    width: 629px;
+                    height: 350px;
+                }
+            }
+            @media (max-width: 668px) {
+                .video_container .video_player {
+                    width: 500px;
+                    height: 270px;
+                }
+            }
+            @media (max-width: 522px) {
+                .video_container .video_player {
+                    width: 450px;
+                    height: 250px;
+                }
+            }
+.videocontrols>.row{
+    display: none!important;
+}
+.live_icon{
+    display: block!important;
+    font-family: 'Outfit';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 13px;
+letter-spacing: 0.02em;
+color: #FFFFFF;
+}
+.live_icon img{
+    width: 9.73px;
+height: 10px;
+padding-bottom: 2px;
+}
+.volume {
+    padding-left: 25px;
+    padding-right: 7px;
+    width: 44px;
+} 
+.video_container .video_player .videocontrols{
+    height: 35px;
+}
+
+       </style>
+    </head>
+    <body>
+    	      <!-- Preloader -->
+        <div id="preloader">
+  <img src="img/loader.gif" alt="Preloader" />
+</div>
+
+<div id="websiteContent">
+        <!-- =========================Nav & Header==============\ -->
+        <div class="live_startup">
+            <!-- ====Nav=== -->
+            <div class="navbar_areaa live_nav_area"></div>
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                <div class="container-fluid filuid_sm">
+                  <a class="navbar-brand" href="index.html"><img src="img/loogo.png" class="logo" /></a>
+                    <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon" style="background-image: url('img/manue.svg')!important;z-index: 2;"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link activenav" href="live.html">Live</a></li>
+                            <li class="nav-item"><a class="nav-link" href="upcoming.html">Upcoming</a></li>
+                            <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target=".my_watchlist" href="Watchlist">Watchlist</a></li>
+                        </ul>
+                        <form class="d-flex">
+                            <img src="img/search.svg" class="search_icon" id="search_icon" onclick="show_search()" />
+                            <span class="search_area" id="search_area">
+                                <button class="sbtn"><img src="img/search.svg" class="search_input_btn" /></button> <input type="text" name="search" class="search_input" placeholder="Titles, people, genres" />
+                            </span>
+                        </form>
+                        <a href="#" class="signup_btn none_sm" data-toggle="modal" data-target=".signup-popup">Sign Up</a>
+                        <a href="#" class="signup_btn for_sm smsigningonly" data-toggle="modal" data-target=".siging_sm_popup">Sign In</a>
+                        <!-- profile_lock-->
+                    </div>
+                </div>
+            </nav>
+            <!-- ===Header=== --><!-- Search -->
+            <div class="live_search_contain">
+                <div class="live_seearchbar_div">
+                    <input type="text" name="search" placeholder="Search Channels, Events & TV Shows" class="live_seearchbar" id="searchInput" onkeyup="searchImages()" /><i class="fa-sharp fa-solid fa-magnifying-glass live_search_icon"></i>
+                </div>
+            </div>
+        </div>
+        <!-- Big video For Chennels-->
+        <section class="full_width_video" id="full_widthvideo">
+            <div class="video_container">
+                <div class="video_player" style="position: relative;">
+                    <button type="button" class="popup_close_btnv" data-mdb-dismiss="modal"><img src="img/vclose.svg" class="img-fluid poup_close_iconV vdeostop-close s_screen active2" onclick="colosefullVmodals()" /></button>
+                    <div class="text-white overrited_onvid">
+                        <p class="mb-0 p_on_vplayer video_title"><img src="img/live_vicon.svg" /> &nbsp;&nbsp;Channels News</p>
+                        <img src="img/s_screen.svg" class="s_screen wf_vicon" />
+                    </div>
+                    <video preload="metadata" class="main-video main-fullvideo" >
+                        <source src="img/video.mp4" size="480" type="video/mp4" />
+                        <track label="English" kind="subtitles" src="./How To Get Started With VSCode.vtt" srclang="en" />
+                        <track label="Urdu" kind="subtitles" src="./test.vtt" srclang="en" />
+                    </video>
+                </div>
+            </div>
+        </section>
+        <!-- End Video --><!-- ================Main Area============= -->
+        <div class="live_liveChennels">
+            <!-- uper area -->
+            <div class="continaer-fluid filuid_sm livep_heading_bar">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-8">
+                        <h2>Channels</h2>
+                        <p>Add Channels to your Watchlist to get Notifications and News.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-4">
+                        <div class="bulles bulles_live">
+                            <span class="live_bulles_item live_active_bulles">&nbsp;</span> <span class="live_bulles_item">&nbsp;</span> <span class="live_bulles_item">&nbsp;</span> <span class="live_bulles_item">&nbsp;</span>
+                            <span class="live_bulles_item">&nbsp;</span> <span class="live_bulles_item">&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ====Chennels Row -->
+            <div class="row liv_chennel_rows">
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel1.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel1.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 2 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel2.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel2.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 3 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel3.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel3.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 4 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel4.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel4.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 5 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel5.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel5.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 6 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel1.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel1.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 7 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel2.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel2.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 8 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel3.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel3.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 9 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel4.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel4.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 10 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel5.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel5.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" width="23px" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 11 -->
+                <div class="liv_chennel_cols">
+                    <div class="card livep_cards moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liv_card_img_area posreraea"><img class="card-img-top livech_img watch_now" src="img/live-chennel1.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="livep_play_icons watch_now" /></div>
+                        <div class="liv_card_img_area cvarea">
+                            <!-- Video -->
+                            <div class="upcomming_pre_vid_area">
+                                <video poster="img/live-chennel1.png" src="img/video.mp4" class="card-img-top hovered_video watch_now" muted></video>
+                                <div class="vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviep_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                            <!-- End Video -->
+                        </div>
+                        <div class="livep_cards_d">
+                            <div class="live_card_details watch_now">
+                                <h2>CHANNELS NEWS</h2>
+                                <p>TVC News set out to Impress the World in a thrilling show of pure Comedic.</p>
+                            </div>
+                            <div class="live_card_btns"><img src="img/playlist_sm.svg" class="live_addwlist" /> <button class="live_chennel_btn1">PG+</button> <button class="live_chennel_btn2">Live</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ==================================Live Page Events======== -->
+        <div class="livep_events_area">
+            <h2>Events</h2>
+            <!-- Row -->
+            <div class="row liveE_row" id="liveE_row1">
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two" src="img/livep_event1.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/livep_event1.png" src="img/evideo.mp4" class="card-img-top hovered_video watch_now watching_two" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>DAVIDO LIVE IN CONCERT</h4>
+                                <p class="liveE_pera"><span class="le_yellow">16+ </span><span class="le_gray"> | starts in </span><span class="le_red"> 01:00:00</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_red_btn">EXCLUSIVE</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two">DAVIDO LIVE IN CONCERT</h2>
+                            <p class="watch_now watching_two">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 01:00:00</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">16+</button> &nbsp;&nbsp; <button class="liveE_red_btn">EXCLUSIVE</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two" src="img/livep_event2.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/livep_event2.png" src="img/evideo.mp4" class="card-img-top hovered_video watch_now watching_two" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>BEAUTY WEDS JOHN</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | </span><span class="le_green"> LIVE</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_yellow_btn">Free</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two">BEAUTY WEDS JOHN</h2>
+                            <p class="watch_now watching_two">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 02:00:00</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp; <button class="liveE_yellow_btn">Free</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two" src="img/livep_event3.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/livep_event3.png" src="img/evideo.mp4" class="card-img-top hovered_video watch_now watching_two" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>AY LIVE IN ABUJA</h4>
+                                <p class="liveE_pera"><span class="le_yellow">13+ </span><span class="le_gray"> | </span><span class="le_green"> LIVE</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_green_btn">PREMIUM</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two">AY LIVE IN ABUJA</h2>
+                            <p class="watch_now watching_two">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 00:19:23</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">13+</button> &nbsp;&nbsp; <button class="liveE_green_btn">PREMIUM</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two" src="img/livep_event4.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/livep_event4.png" src="img/evideo.mp4" class="card-img-top hovered_video watch_now watching_two" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>MAINLAND BLOCK PARTY</h4>
+                                <p class="liveE_pera"><span class="le_yellow">16+ </span><span class="le_gray"> | </span><span class="le_green"> LIVE</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_green_btn">PREMIUM</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two">MAINLAND BLOCK PARTY</h2>
+                            <p class="watch_now watching_two">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 01:00:00</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">16+</button> &nbsp;&nbsp; <button class="liveE_green_btn">PREMIUM</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two" src="img/livep_event5.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/livep_event5.png" src="img/evideo.mp4" class="card-img-top hovered_video watch_now watching_two" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>MORNING PRAYER SERVICE W</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | starts in </span><span class="le_red"> 00:58:34</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_red_btn">EXCLUSIVE</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two">MORNING PRAYER SERVICE W</h2>
+                            <p class="watch_now watching_two">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 00:58:34</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp; <button class="liveE_red_btn">EXCLUSIVE</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two" src="img/livep_event1.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/livep_event1.png" src="img/evideo.mp4" class="card-img-top hovered_video watch_now watching_two" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>MORNING PRAYER SERVICE W</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | starts in </span><span class="le_red">00:58:34</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_red_btn">EXCLUSIVE</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two">MORNING PRAYER SERVICE W</h2>
+                            <p class="watch_now watching_two">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 00:58:34</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp;<button class="liveE_red_btn">EXCLUSIVE</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two" src="img/livep_event2.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/livep_event2.png" src="img/evideo.mp4" class="card-img-top hovered_video watch_now watching_two" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>DAVIDO LIVE IN CONCERT</h4>
+                                <p class="liveE_pera"><span class="le_yellow">16+ </span><span class="le_gray"> | starts in </span><span class="le_red"> 01:00:00</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_red_btn">EXCLUSIVE</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two">DAVIDO LIVE IN CONCERT</h2>
+                            <p class="watch_now watching_two">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 01:00:00</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">16+</button> &nbsp;&nbsp; <button class="liveE_red_btn">EXCLUSIVE</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two" src="img/livep_event3.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/livep_event3.png" src="img/evideo.mp4" class="card-img-top hovered_video watch_now watching_two" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>BEAUTY WEDS JOHN</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | </span><span class="le_green"> LIVE</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_yellow_btn">Free</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two">BEAUTY WEDS JOHN</h2>
+                            <p class="watch_now watching_two">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 02:00:00</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp; <button class="liveE_yellow_btn">Free</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+            </div>
+        </div>
+        <!-- ==================================TV Shows======== -->
+        <div class="livep_events_area livep_tv_area">
+            <h2>Tv Shows</h2>
+            <!-- Row -->
+            <div class="row liveE_row">
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa livep_event2_card">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two voting" src="img/tivshows1.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two voting" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/tivshows1.png" src="img/video.mp4" class="card-img-top hovered_video watch_now watching_two voting" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>MTN PROJECT FAME</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | starts in </span><span class="le_red"> 01:00:00</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_red_btn">EXCLUSIVE</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two voting">MTN PROJECT FAME</h2>
+                            <p class="watch_now watching_two voting">
+                                TVC News set out to Impress the World in <br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 01:00:00</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp; <button class="liveE_red_btn">EXCLUSIVE</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa livep_event2_card">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two voting" src="img/tivshows2.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two voting" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/tivshows2.png" src="img/video.mp4" class="card-img-top hovered_video watch_now watching_two voting" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>BIG BRODA NAIJA</h4>
+                                <p class="liveE_pera"><span class="le_yellow">18+ </span><span class="le_gray"> | </span><span class="le_green"> LIVE</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_green_btn">PREMIUM</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two voting">BIG BRODA NAIJA</h2>
+                            <p class="watch_now watching_two voting">
+                                TVC News set out to Impress the World in <br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0 pt-1"><span class="le_green"> LIVE</span></p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">18+</button> &nbsp;&nbsp; <button class="liveE_green_btn">PREMIUM</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa livep_event2_card">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two voting" src="img/tivshows3.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two voting" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/tivshows3.png" src="img/video.mp4" class="card-img-top hovered_video watch_now watching_two voting" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>THE VOICE NAIJA</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | </span><span class="le_green"> LIVE</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_yellow_btn">Free</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two voting">THE VOICE NAIJA</h2>
+                            <p class="watch_now watching_two voting">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0 pt-1"><span class="le_green"> LIVE</span></p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp; <button class="liveE_yellow_btn">Free</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa livep_event2_card">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two voting" src="img/tivshows4.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two voting" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/tivshows4.png" src="img/video.mp4" class="card-img-top hovered_video watch_now watching_two voting" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>GULDER ULTIMATE SEARCH</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | starts in </span><span class="le_red">00:52:25</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_red_btn">EXCLUSIVE</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two voting">GULDER ULTIMATE SEARCH</h2>
+                            <p class="watch_now watching_two voting">
+                                TVC News set out to Impress the World in <br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 00:52:25</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp;<button class="liveE_red_btn">EXCLUSIVE</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa livep_event2_card">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two voting" src="img/tivshows1.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two voting" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/tivshows1.png" src="img/video.mp4" class="card-img-top hovered_video watch_now watching_two voting" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>MTN PROJECT FAME</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | starts in </span><span class="le_red"> 01:00:00</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_red_btn">EXCLUSIVE</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two voting">MTN PROJECT FAME</h2>
+                            <p class="watch_now watching_two voting">
+                                TVC News set out to Impress the World in <br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 01:00:00</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp; <button class="liveE_red_btn">EXCLUSIVE</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa livep_event2_card">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two voting" src="img/tivshows2.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two voting" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/tivshows2.png" src="img/video.mp4" class="card-img-top hovered_video watch_now watching_two voting" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>BIG BRODA NAIJA</h4>
+                                <p class="liveE_pera"><span class="le_yellow">18+ </span><span class="le_gray"> | </span><span class="le_green"> LIVE</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_green_btn">PREMIUM</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two voting">BIG BRODA NAIJA</h2>
+                            <p class="watch_now watching_two voting">
+                                TVC News set out to Impress the World in <br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0 pt-1"><span class="le_green"> LIVE</span></p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">18+</button> &nbsp;&nbsp; <button class="liveE_green_btn">PREMIUM</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa livep_event2_card">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two voting" src="img/tivshows3.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two voting" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/tivshows3.png" src="img/video.mp4" class="card-img-top hovered_video watch_now watching_two voting" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>THE VOICE NAIJA</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | </span><span class="le_green"> LIVE</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_yellow_btn">Free</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two voting">THE VOICE NAIJA</h2>
+                            <p class="watch_now watching_two voting">
+                                TVC News set out to Impress the World in<br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0 pt-1"><span class="le_green"> LIVE</span></p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp; <button class="liveE_yellow_btn">Free</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <div class="live_event_cols">
+                    <!-- Card Start -->
+                    <div class="card livep_event_cards livep_event1_card moviep_vareaa livep_event2_card">
+                        <!-- POSTER -->
+                        <div class="liveE_img posreraea">
+                            <img class="card-img-top livep-event-imgs watch_now watching_two voting" src="img/tivshows4.png" alt="Card image cap" /> <img src="img/live_chennel_paly.svg" class="liveE_play_icons watch_now watching_two voting" />
+                        </div>
+                        <!-- Video -->
+                        <div class="liveE_img cvarea">
+                            <div class="upcomming_pre_vid_area livvp_areas">
+                                <video poster="img/tivshows4.png" src="img/video.mp4" class="card-img-top hovered_video watch_now watching_two voting" muted></video>
+                                <div class="vbuttons sacounds_vbuttons"><button id="play-pause"></button></div>
+                                <!-- video controls staart -->
+                                <div class="v_controls">
+                                    <!-- Video bar -->
+                                    <div class="red_vbar red_vbar_evnt"><div class="red_juice"></div></div>
+                                </div>
+                                <!-- video controls end -->
+                                <div class="uocomigpre_lable">
+                                    <div class="moviepevent_varea"><img src="img/mute.png" class="volumebtnv" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row livep-event-dtails">
+                            <div class="col-lg-8 col-md-8 col-8 text-right">
+                                <h4>GULDER ULTIMATE SEARCH</h4>
+                                <p class="liveE_pera"><span class="le_yellow">PG+ </span><span class="le_gray"> | starts in </span><span class="le_red">00:52:25</span></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3"><button class="liveE_red_btn">EXCLUSIVE</button></div>
+                        </div>
+                        <!-- ===Hovered Details=== -->
+                        <div class="liveE_hovered_d">
+                            <h2 class="watch_now watching_two voting">GULDER ULTIMATE SEARCH</h2>
+                            <p class="watch_now watching_two voting">
+                                TVC News set out to Impress the World in <br />
+                                a thrilling show of pure Comedic.
+                            </p>
+                            <div class="liveE_hovred_btns">
+                                <p class="mb-0">
+                                    <span class="le_gray">starts in</span><br />
+                                    <span class="le_red"> 00:52:25</span>
+                                </p>
+                                &nbsp;&nbsp;&nbsp; <button class="liveE_hovred_btn1">PG+</button> &nbsp;&nbsp;<button class="liveE_red_btn">EXCLUSIVE</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+            </div>
+        </div>
+        <div class="live_add_area"><img src="img/livep_add.png" /><span class="add_lable_live">AD</span><span class="live_add_buybtn">Buy Now</span></div>
+        <!-- ===Scroll Up Btn=== -->
+        <button id="back-to-top-btn" title="Back to top"><img src="img/right_arrow.svg" /></button>
+        <!-- =========================All POPUPs Start===================== --><!-- ====Signup Start=== --><!-- ============================================================== -->
+        <div class="modal fade signup-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupsignup">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_signupa()" /></button>
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo" /></center>
+                    <p class="login_pera">
+                        Create an Account<br />
+                        and Start Watching your<br />
+                        Favorite Movies.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="text" name="name" class="login_inputs" placeholder="Full Name" />
+                            <p class="mb-3"></p>
+                            <input type="tel" id="phone-number" pattern="[0-9]*" class="login_inputs intl-tel-input contact_input" /><input type="Email" name="name" class="login_inputs" placeholder="Email" />
+                            <div style="position: relative;"><input type="password" name="passsword" class="login_inputs" placeholder="Password" required="" name="password" id="password2" /><img src="img/aye.svg" id="eye-icon2" /></div>
+                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" class="sinup_checkbox" /> <label for="vehicle1" class="lable_signup">Receive promotion emails</label>
+                            <button type="submit" class="log_in_btn sinup_btn" onclick="close_signupa()" data-toggle="modal" data-target=".verify_phone">Create an Account</button>
+                            <a href="#" class="reset_pass" onclick="close_signupa()" data-toggle="modal" data-target=".siging-popup">Login</a>
+                            <p class="aske_to_reset">If you already have a Reeplay Account</p>
+                        </form>
+                    </center>
+                    <!-- ====End signup Form=== -->
+                </div>
+            </div>
+        </div>
+        <!-- ====Sign Up PopupEnd== --><!-- ================================================================ --><!-- =====================Verify Phone No======= --><!-- ============================================================== -->
+        <div class="modal fade verify_phone" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupverifyphone">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_popupverifyphone()" /></button>
+                    <div class="phone_vf_areaa">
+                        <h4>Verify PHONE NUMBER</h4>
+                        <br />
+                        <input type="password" name="vf_code" placeholder="*** - ***" class="pfv_code_input" /><input type="button" value="Send Code" class="pfv_code_btn" />
+                        <button type="submit" class="log_in_btn verify_pass_btn" onclick="close_popupverifyphone()" data-toggle="modal" data-target=".verify_done">Verify</button> <br />
+                        <p class="text-white code_expiry">Code expires in 10 minuites</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===================End Verify Phone No====== --><!-- =============================================================== --><!-- ==============Verifcation SuccessFulll STR============= --><!-- =============================================================== -->
+        <div class="modal fade verify_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupverifdone">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_verifydone()" /></button>
+                    <div class="phone_vf_areaa verifydone">
+                        <img src="img/v_done.png" class="verifdon_png" />
+                        <h4>
+                            Verification<br />
+                            Successful
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===================End Verify Successfull====== --><!-- =============================================================== --><!-- ====Login Start=== --><!-- ============================================================== -->
+        <div class="modal fade siging-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupsignin">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_signin()" /></button>
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo" /></center>
+                    <p class="login_pera">
+                        Login to Watch the Action,<br />
+                        and Live Shows from your<br />
+                        Favorite Stars.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="Email" name="name" class="login_inputs login-in" placeholder="Email" />
+                            <div style="position: relative;">
+                                <input type="password" name="passsword" class="login_inputs login-in" placeholder="Password" required="" name="password" id="password1" /><img src="img/aye.svg" id="eye-icon1" />
+                            </div>
+                            <br />
+                            <button type="submit" class="log_in_btn sinup_btn login-btn">Login</button> <button type="submit" class="log_in_btn sinup_btn login-btn signupbtn">Create a New Account</button>
+                            <p class="aske_to_reset pb-0">Forgot your Password?</p>
+                            <a href="#" class="reset_pass pt-2" onclick="close_signin()" data-toggle="modal" data-target=".reset_passpop">Reset it</a>
+                        </form>
+                    </center>
+                    <!-- ====End signup Form=== -->
+                </div>
+            </div>
+        </div>
+        <!-- ====Login Popup End== --><!-- ================================================================ --><!-- Reset Pass PopUp==== --><!-- =========================================================== -->
+        <div class="modal fade reset_passpop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupreset">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_resetpop()" /></button>
+                    <!-- ======Reset Pass=== -->
+                    <div class="resetpass_area">
+                        <h4>Reset your Password</h4>
+                        <center>
+                            <form>
+                                <input type="Email" name="name" class="login_inputs login-in" placeholder="Email" /><br />
+                                <button type="button" class="log_in_btn sinup_btn login-btn" onclick="close_resetpop()" data-toggle="modal" data-target=".reset_done">Reset Password</button>
+                            </form>
+                        </center>
+                    </div>
+                    <!-- ====End Reset === -->
+                </div>
+            </div>
+        </div>
+        <!-- ================End Reset POPUP========= --><!-- ============================================================= --><!-- ===========================RESET DONE STR============== -->
+        <div class="modal fade reset_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="resetdonepop">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_resetdone()" /></button>
+                    <div class="phone_vf_areaa verifydone">
+                        <img src="img/v_done.png" class="verifdon_png" />
+                        <h4>
+                            Password reset link<br />
+                            was sent to your email
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================END RESET DONE============= --><!-- =============================================================== --><!-- ========================Profile Lock Start========= --><!-- =============================================================== -->
+        <div class="modal fade profile_lock" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="profilelockpop">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_profilelock()" /></button>
+                    <!-- Main -->
+                    <div class="lock_profile_area">
+                        <p class="pfl_p1">Welcome back <b>Edward</b></p>
+                        <p class="pfl_p2">Use pin to continue.</p>
+                        <!-- ==Inputs== -->
+                    </div>
+                    <div class="otp-container">
+                        <input type="text" class="otp-input" maxlength="1" id="otp1" oninput="moveToNext(this, 'otp2')" onkeydown="moveToPrev(event, 'otp1', 'otp2')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp2" oninput="moveToNext(this, 'otp3')" onkeydown="moveToPrev(event, 'otp2', 'otp3')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp3" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(event, 'otp3', 'otp4')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp4" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(event, 'otp4', 'otp4')" />
+                    </div>
+                    <!-- End Inputs -->
+                    <center><hr class="pfl_hr" /></center>
+                    <a href="#" class="pfl_porgot text-center">Forgot PIN?</a>
+                    <!-- End Main -->
+                </div>
+            </div>
+        </div>
+        <!-- ========================Profile Lock End===== --><!-- ============================================================== --><!-- Dailog and subscribe btns -->
+        <a href="#" class="popups_hiden_btns" id="mydailogbtn" data-toggle="modal" data-target=".dailog_pop" data-backdrop="static">dailog</a>
+         <!-- sm dailog -->
+        <a href="#" class="popups_hiden_btns" id="smdailogbtn" data-toggle="modal" data-target=".aler_sm_login" data-backdrop="static">dailog</a>
+        <!-- ============================================================== --><!-- ==================Dailog POP Start================ -->
+        <div class="modal fade dailog_pop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="dailogpopup">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_dailogpop()" /></button>
+                    <!-- ===Main Area=== -->
+                    <div class="dailog_pop_area">
+                        <img src="img/biglogo.png" />
+                        <p class="dailpgpop1">You are not signed in.</p>
+                        <p class="dailpgpop2">
+                            Sign in or Register to enjoy<br />
+                            Premium Content on all your<br />
+                            devices.
+                        </p>
+                        <div class="dailog_pop_btns">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12 mt-2"><button class="sign_in_dailog" onclick="close_dailogpop()" data-toggle="modal" data-target=".siging-popup">Sign In</button></div>
+                                <div class="col-lg-6 col-md-6 col-12 mt-2"><button class="sign_up_dailog" onclick="close_dailogpop()" data-toggle="modal" data-target=".signup-popup">Register</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ========================End Dailog POP==== --><!-- =============================================================== --><!-- =======================Premium Popup====== --><!-- ============================================================ -->
+        <div class="modal fade premium_pop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="premiumpopup">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_premiumpop()" /></button>
+                    <!-- ===Main Area=== -->
+                    <div class="dailog_pop_area">
+                        <img src="img/biglogo.png" />
+                        <p class="dailpgpop1">
+                            You don’t have an active <br />
+                            subscription
+                        </p>
+                        <p class="dailpgpop2">
+                            This is a Premium content, you<br />
+                            must subscribe to watch.
+                        </p>
+                        <div class="dailog_pop_btns subscribebtn"><button class="sign_up_dailog" onclick="close_premiumpop()">Subscribe</button></div>
+                    </div>
+                    <!-- ===End Main Area==== -->
+                </div>
+            </div>
+        </div>
+        <!-- ==========End Premium Popup===== --><!-- =========================================================== --><!-- Watchlist modal -->
+        <div class="modal fade my_watchlist" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mywatchlistpo">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal logn_modals" style="background: rgba(36, 36, 36, 0.9); height: unset;">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon2" onclick="close_watchlistpop()" /></button>
+                    <div class="container">
+                        <div class="row mt-3"><h6 class="dawoloads_heading watchlist_heading">My Watchlist</h6></div>
+                    </div>
+                    <!-- ======Watchlist=== -->
+                    <div class="dawoload_popup_area container waatchlist_area">
+                        <!-- ===row 1== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                        </div>
+                        <!-- ===row 2== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                        </div>
+                        <!-- ===row 3== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                        </div>
+                        <!-- ===row 4== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                        </div>
+                        <!-- ===row 5== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                        </div>
+                        <!-- ===row 6== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                        </div>
+                        <!-- ===row 7== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                        </div>
+                        <!-- ===row 8== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                        </div>
+                    </div>
+                    <!-- =====AD== -->
+                    <div class="long_add_area"><img src="img/dawonload_ads.png" class="long_adds" /><span class="add_lable_live lng_add">AD</span></div>
+                    <!-- ===Buttons== -->
+                    <div class="dawoloading_lst_btns buy_adsc_btns">
+                        <button class="dawoloading_lst_btn1 buy_now_add">Buy Now</button>
+                        <center><hr class="dbtn_hr buyadd_hr" /></center>
+                        <button class="dawoloading_lst_btn2 buy_add_closebtn" onclick="close_watchlistpop()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Watchlist POPup --><!-- ==================Select Payment Method Popup============== --><!-- Method modal -->
+        <div class="modal fade choose_pay_method" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypaymethodpop" data-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal medium_modals chooese_method_modal auto_height_modals">
+                    <button type="button" class="popup_close_btn choode_method_close" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon close_p_video" onclick="close_paymethods()" /></button>
+                    <!-- =======Main=== -->
+                    <div class="choose_pay_method_area">
+                        <!-- logo -->
+                        <img src="img/biglogo.png" class="big_logo_onPopup" />
+                        <!-- payment area -->
+                        <div class="select_method_payarea">
+                            <input type="text" class="cm-pay-amoount" placeholder="Amount" />
+                            <!-- Hr -->
+                            <center><hr class="choose_method_hr" /></center>
+                            <!-- ===Btns=== -->
+                            <div class="select_amount_btns_area"><button>₦500</button> <button>₦1000</button> <button>₦3000</button> <button>₦5000</button></div>
+                            <!-- =====End Btns==== --><!-- ====Method Selection=== -->
+                            <div class="pmethod_selection">
+                                <p class="selct_m_lable" id="ssted_pm">Add Payment Method</p>
+                                <p class="pm_slections mb-0" id="select_pms"><span value="" selected id="selectpmeth">Select &nbsp;&nbsp;&nbsp;</span></p>
+                            </div>
+                            <!-- ===options== -->
+                            <div class="pm_options_area">
+                                <!-- 0 -->
+                                <div class="pb-2 mt-1">
+                                    <div class="pm_method_options">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-3"><img src="img/balance.svg" class="pl-5pa" /></div>
+                                            <div class="col-lg-8 col-md-8 col-8"><p class="text-white m-0 pm_names" value="visa_mastercard_verve">WALLET BALANCE</p></div>
+                                            <div class="col-lg-1 col-md-1 col-1"><img src="img/pf_right_arrow.svg" class="more_icon mt-2" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <!-- 1 -->
+                                <div class="pb-2">
+                                    <div class="pm_method_options">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-3"><img src="img/Mastercard.svg" /> <img src="img/visa.svg" /></div>
+                                            <div class="col-lg-8 col-md-8 col-8"><p class="text-white m-0 pm_names" value="visa_mastercard_verve">VISA | MASTERCARD | VERVE</p></div>
+                                            <div class="col-lg-1 col-md-1 col-1"><img src="img/pf_right_arrow.svg" class="more_icon mt-2" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <!-- 2 -->
+                                <div class="mb-2">
+                                    <div class="pm_method_options">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-3"><img src="img/apple_pay.svg" /></div>
+                                            <div class="col-lg-8 col-md-8 col-8"><p class="text-white m-0 pm_names" value="apple_pay">APPLE PAY</p></div>
+                                            <div class="col-lg-1 col-md-1 col-1"><img src="img/pf_right_arrow.svg" class="more_icon mt-2" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <!-- 3 -->
+                                <div class="mb-2">
+                                    <div class="pm_method_options">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-3"><img src="img/paypal.svg" /></div>
+                                            <div class="col-lg-8 col-md-8 col-8"><p class="text-white m-0 pm_names" value="paypal">PAYPAL</p></div>
+                                            <div class="col-lg-1 col-md-1 col-1"><img src="img/pf_right_arrow.svg" class="more_icon mt-2" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <!-- 4 -->
+                                <div class="mb-2">
+                                    <div class="pm_method_options">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-3"><img src="img/bank.svg" /></div>
+                                            <div class="col-lg-8 col-md-8 col-8"><p class="text-white m-0 pm_names" value="usdd_bank_transfer">USSD | BANK TRANSFER</p></div>
+                                            <div class="col-lg-1 col-md-1 col-1"><img src="img/pf_right_arrow.svg" class="more_icon mt-2" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <!-- 5 -->
+                                <div class="pm_method_options">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3 col-3"><img src="img/bitcoin.svg" /></div>
+                                        <div class="col-lg-8 col-md-8 col-8"><p class="text-white m-0 pm_names" value="crypto">CRYPTO</p></div>
+                                        <div class="col-lg-1 col-md-1 col-1"><img src="img/pf_right_arrow.svg" class="more_icon mt-2" /></div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            <!-- end options== -->
+                            <button class="continue_pm continuepmliv" data-toggle="modal" data-target=".continue_pay_method" onclick="close_paymethods()">Countinue</button>
+                            <!-- =====End Method Selection==== -->
+                        </div>
+                    </div>
+                    <!-- ======End Main==== -->
+                </div>
+            </div>
+        </div>
+        <!-- ==========End Select Payment Method Popup========= --><!-- =====================Countinue WIth Payment======= --><!-- Method modal -->
+        <div class="modal fade continue_pay_method" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mycpaypopup" data-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal medium_modals chooese_method_modal">
+                    <button type="button" class="popup_close_btn choode_method_close" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon close_p_video" onclick="close_continemethods()" /></button>
+                    <!-- ====Main== -->
+                    <div class="countinue_method_area">
+                        <h1 class="cp_heading">REVIEW SUMMARY</h1>
+                        <!-- ==slected amount== -->
+                        <br />
+                        <br />
+                        <div class="sa_div">
+                            <p class="sa_p1">Amount</p>
+                            <p class="sa_p2">₦300.00</p>
+                        </div>
+                        <div class="sa_div">
+                            <p class="sa_p1 mb-0">Fee</p>
+                            <p class="sa_p2 mb-0">₦0.00</p>
+                        </div>
+                        <hr class="choose_method_hr w-100" />
+                        <div class="sa_div">
+                            <p class="sa_p1">Total</p>
+                            <p class="sa_p2">₦300.00</p>
+                        </div>
+                    </div>
+                    <!-- ===payment dtails=== --><!-- ====Method Selection=== -->
+                    <div class="pmethod_selection countinue_pm_numb">
+                        <div>
+                            <img src="img/visa.svg" /><input type="text" name="" class="payment_number" type="text" id="cardNumber" placeholder="Enter your Visa card number" oninput="formatCardNumber()" maxlength="19" />
+                            <div class="card-icon"></div>
+                        </div>
+                        <p class="change_p_method" onclick="close_continemethods()" data-toggle="modal" data-target=".choose_pay_method">Change</p>
+                    </div>
+                    <center><button class="continue_pm" data-toggle="modal" data-target=".topup_done" onclick="close_continemethods()">Confirm Payment</button></center>
+                    <!-- End Main -->
+                </div>
+            </div>
+        </div>
+        <!-- =================End Countinue With payment==== --><!-- ==========================TOPUP SUCCESs Start===== -->
+        <div class="modal fade topup_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="topupdonepop" data-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn close_p_video" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_topupdone()" /></button>
+                    <div class="phone_vf_areaa verifydone">
+                        <img src="img/v_done.png" class="verifdon_png" />
+                        <h4 class="topupdone_heading">
+                            Thank You,<br />
+                            Your Donation was successful.
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ==================EDN Open account in app -->
+<p href="account_view" data-toggle="modal" data-target=".opn_app_content" id="viewapp_conntent_btn" style="display:none;"></p>
+<!-- Oen Content in app -->
+<div class="modal fade opn_app_content smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="appcontent">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+<!-- content -->
+<div class="opne_c_app">
+  <img src="img/pop.jpg" class="open_capp_img">  
+  <p class="app_ac_pera">To watch Reeplay on your mobile,<br>
+click button below to open with app.</p>
+<button class="watch_now_btn opne_inapp_c appbtn" id="appbtn1"><img src="img/vd_cion.svg" />Open App</button><br>
+<p class="app_ac_close contentcsmbnt" onclick="close_appc_con()">close</p>
+</div>
+
+<!-- End content -->
+</div>
+</div>
+</div>
+
+
+<!-- ================End Open Content inn app============= -->
+
+<!-- ========= login alert on mobile phone======= -->
+<div class="modal fade aler_sm_login smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="smalertlogin">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+
+<!-- Mian content -->
+<div class="main_login_alert">
+    <img src="img/biglogo.png">
+    <p class="aler_santence">You are not signed in.</p>
+    <p class="aler_santence2">Sign in or Register to enjoy <br>
+Premium Content on all your <br>
+devices.</p>
+<a onclick="close_smallert()" data-toggle="modal" data-target=".siging_sm_popup">
+<button class="watch_now_btn">Sign In</button></a><br>
+<p class="app_ac_close" onclick="close_smallert()">close</p>
+
+</div>
+<!-- end -->
+</div>
+</div>
+</div>
+<!-- ===========End login Alert on mobile -->
+
+<!-- ==============login popup on sm=========== -->
+<div class="modal fade siging_sm_popup smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="smlogin">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+<!-- main contant -->
+<div class="login_sm_div">
+
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo usedforsm_biglogo" /></center>
+                    <p class="login_pera">
+                        Login to Watch the Action,<br />
+                        and Live Shows from your<br />
+                        Favorite Stars.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="Email" name="name" class="login_inputs login-in mt-2" placeholder="Email" />
+                            <div style="position: relative;">
+  <input type="password" name="passsword" class="login_inputs login-in mt-3" placeholder="Password" required="" id="password3" /><img src="img/aye.svg" id="eye-icon3" />
+                            </div>
+                            <br />
+                            <button type="submit" class="log_in_btn sinup_btn login-btn mt-0">Login</button> <button type="button" class="log_in_btn sinup_btn login-btn signupbtn appbtn" id="appbtn2">Create a New Account</button>
+                            <p class="aske_to_reset pb-0">Forgot your Password?</p>
+                            <a class="reset_pass pt-2 appbtn" id="appbtn3">Reset it</a>
+                        </form>
+                        <p class="app_ac_close pb-0" onclick="close_smlogin()">close</p>
+                    </center>
+                    <!-- ====End signup Form=== -->
+</div>
+<!-- end main content -->
+</div>
+</div>
+</div>
+    <script>
+let eyeicon2 = document.getElementById("eye-icon2"),
+    password2 = document.getElementById("password2");
+eyeicon2.onclick = function () {
+    "password" == password2.type ? (password2.type = "text") : (password2.type = "password");
+};
+let eyeicon1 = document.getElementById("eye-icon1"),
+    password1 = document.getElementById("password1");
+eyeicon1.onclick = function () {
+    "password" == password1.type ? (password1.type = "text") : (password1.type = "password");
+};
+let eyeicon3 = document.getElementById("eye-icon3"),
+    password3 = document.getElementById("password3");
+eyeicon3.onclick = function () {
+    "password" == password3.type ? (password3.type = "text") : (password3.type = "password");
+};
+
+// Check user agent to determine the device type
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  var buttonsand = document.getElementsByClassName("appbtn");
+  for (var i = 0; i < buttonsand.length; i++) {
+    var buttonad = buttonsand[i];
+
+    if (/android/i.test(userAgent)) {
+      // Android device
+      var playStoreLink = "https://play.google.com/store/apps";
+      buttonad.onclick = function() {
+        window.location.href = playStoreLink;
+      };
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      // iOS device
+      var appStoreLink = "https://www.apple.com/app-store/";
+      buttonad.onclick = function() {
+        window.location.href = appStoreLink;
+      };
+    }
+  }
+    </script>
+<!-- ===========End login popup========== -->
+        <!-- =========END TOpup Success======= --><!-- =========================End All Popups======================== -->
+        <!-- ====================END Main Area=============== --><!-- Bootstrap Js -->
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+        <!-- Build For Tel=== -->
+        <script src="build/js/intlTelInput.js"></script>
+        <!-- Core Js -->
+        <script src="js/livescript.js"></script>
+         <script src="js/smjs.js"></script>
+        <!-- -====Video Player=== -->
+        <script src="js/videoscript.js"></script>
+    </div>
+   
+
+    </body>
+</html>

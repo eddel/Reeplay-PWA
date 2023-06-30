@@ -1,0 +1,3067 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Reeplay</title>
+
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Core Css -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+<!-- =====Multiple google fonts=== -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit|Oswald|Poppins|Roboto">
+<!-- ====Font Awesome=== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- =====Build Tel=-=   -->
+<link rel="stylesheet" type="text/css" href="build/css/intlTelInput.css">
+
+<!-- Video Player=== -->
+<link rel="stylesheet" type="text/css" href="css/videostyle.css">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+ <link rel="icon" href="img/favicon.png" type="image/x-icon">
+ <style>
+    .donaite_live{
+display: none!important;
+}
+#back-to-top-btn2{
+  display: none; /* hide the button by default */
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  z-index: 1000;
+  font-size: 18px;
+  border: none;
+  outline: none;
+ background: rgba(255, 19, 19, 0.59);
+ backdrop-filter: blur(3.5px);
+  color: white;
+  cursor: pointer;
+  padding: 10px 14px!important;
+  padding-top: 8px!important;
+  border-radius: 5px;
+transition: all 0.3s;
+transform:none;
+}
+#back-to-top-btn2 img{
+  width: 18px;
+margin: 0px;
+}
+
+#back-to-top-btn2:hover img{
+width: 17.5px;
+}
+
+.video_container .video_player{
+  width: unset;
+  height: unset;
+}
+@media (min-width: 992px){
+.modal-lg, .modal-xl {
+    max-width: 100vw;
+}
+.mid_modals_content{
+  width: 830px;
+  max-height: 1703px;
+}
+}
+@media (min-width: 430px) and (max-width: 992px){
+.modal-dialog {
+    max-width: 100vw;
+    margin: 1.75rem auto;
+}
+.mid_modals_content{
+  max-width: 85%;
+}
+}
+
+@media (max-width: 768px){
+.film_big{
+  font-size: 16px;
+}
+.red_noti_big {
+    width: 19px;
+    margin-top: -3px;
+    margin-right: 2px;
+}
+.upcoming_watch_popup {
+    max-width: 100%;
+ }
+ .see_upcoming_p1{
+  margin-top: 20px;
+ }
+ .casts{
+  margin-left: 20px;
+ }
+ .upcoming_see_hr{
+  margin: 0px;
+ }
+ .upcom_buynowadd{
+  left: 73%;
+    top: 70%;
+ }
+ .see_upcoming_p1, .see_upcoming_p2{
+  font-size: 15px;
+ }
+ .above_icon{
+  width: 20px;
+ }
+ .boxx5{
+      width: 160.64px;
+    height: 250.17px;
+ }
+}
+</style>
+
+</head>
+<body>
+      <!-- Preloader -->
+        <div id="preloader">
+  <img src="img/loader.gif" alt="Preloader" />
+</div>
+
+<div id="websiteContent">
+<!-- =========================Nav & Header==============\ -->
+<div>
+
+<!-- ====Nav=== -->
+<div class="navbar_areaa"></div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid filuid_sm">
+    <a class="navbar-brand" href="index.html"><img src="img/loogo.png" class="logo" /></a>
+  <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" style="background-image: url('img/manue.svg')!important"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="live.html">Live</a>
+        </li>
+    <li class="nav-item">
+          <a class="nav-link activenav" href="upcoming.html">Upcoming</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="library.html">Library</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target=".my_watchlist" href="Watchlist">Watchlist</a>
+        </li>
+      </ul>
+  
+      <form class="d-flex">
+        <img src="img/search.svg" class="search_icon" id="search_icon" onclick="show_search()">
+        <span class="search_area" id="search_area">
+        	<button class="sbtn"><img src="img/search.svg" class="search_input_btn"></button>
+        <input type="text" name="search" class="search_input" placeholder="Titles, people, genres"></span>
+      </form>
+     <a href="#" class="signup_btn none_sm" data-toggle="modal" data-target=".signup-popup">Sign Up</a>
+                        <a href="#" class="signup_btn for_sm smsigningonly" data-toggle="modal" data-target=".siging_sm_popup">Sign In</a>
+ <!--  profile_lock-->
+    </div>
+  </div>
+</nav>
+</div>
+
+
+
+
+<!-- =======================================Main Content===================================================================== -->
+<div class="container_fluid upcoming_main">
+  <h1 class="coming_heading">Coming Soon</h1>
+  <br>
+  <!-- ====Row 1== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming1.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">MUMMY<br>SOLDIER</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+          <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+       
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+
+
+<!-- ====Row 2=== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+
+<!-- ====Row 3=== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+
+<!-- ===Row 4=== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+<!-- ====Row 5=== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+<!-- ====Row 6=== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+<!-- === Row 7== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+<!-- ===Row 8== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+<!-- ===Row 9== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div>
+<!-- ====Row 10=== -->
+<div class="row upcoming_rows">
+  <!-- COL 1 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- COL 2 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching2.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">AKI &<br>PAWPAW</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>AKI & PAWPAW</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+<!-- COL 3 -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/upcoming3.jpg" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">TOY<br>STORY</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>TOY STORY</h2>  
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+<!-- ===Col 4== -->
+<div class="col-lg-3 col-md-6 col-12">
+  <div class="card upcoming_cards">
+    <div class="upcome_card_img">
+  <img class="card-img-top upcoming_active_img" src="img/watching3.png" alt="Card image cap">
+  <span class="uocomig_hov_line upcom_hover">LADY<br>BUCKECT</span>
+  <span class="uocomig_watchied_line">&nbsp;</span>
+  </div>
+  <div class="card-body pt-0">
+<!-- Upcoming no hover -->
+ <div class="upcom_no_hover"> 
+    <h2>LADY BUCKECT</h2>
+<div class="text-center">
+ <span class="coming_date">COMING JANUARY 21 </span>
+    <img src="img/upcoming_bell.svg" class="red_noti rednoti2"><span class="film">  Remind me</span>
+</div>
+</div>
+<!-- upcoming hovered -->
+<div class="upcom_hover">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-6">
+        <img src="img/upcoming_bell.svg" class="red_noti"> <span class="film">FILM</span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-6">
+       <button class="first_upcoming_info" data-toggle="modal" data-target=".upcoming-details">
+        <div class="">
+        <img src="img/upcoming_info.svg" class="line_break">
+        <p class="info_upcoming">INFO</p></button>
+      </div>
+    </div>
+    </div>
+<!--  -->
+    <p class="card-text first_upcoming_disc mb-0">2 Sisters set out to Impress the World,
+in a thrilling show of Bravery and Comedic Trickery.
+Not less than 100 and not more 
+than 150 words allowed here.</p>
+ 
+ <!-- upcoming hovered -->
+ <span class="coming_date upcom_hover">COMING JANUARY 21</span>
+
+  </div>
+</div>
+</div>
+
+</div><br>
+
+<br>
+</div>
+
+<!-- ===Scroll Up Btn=== -->
+<button id="back-to-top-btn2" class="back-to-top-btn" title="Back to top"><img src="img/totop.svg" class="totop_icon"></button>
+<!-- ================ EDN Main Content========= -->
+<!-- =============================================================== -->
+
+
+<!-- ============================Upcoming Details====== -->
+<!-- Upcoming modal -->
+<div class="modal fade upcoming-details" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="upcomingpopup" data-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content upcoming_modal mid_modals_content">
+    <!-- video -->
+<section>
+    <div class="video_container">
+
+      <div class="video_player" style="position: relative;">
+<button type="button" class="popup_close_btnv" data-mdb-dismiss="modal" ><img src="img/vclose.svg" class="img-fluid poup_close_iconV vdeostop-close s_screen active2" onclick="coloseVmodals()">
+</button>
+        <div class="text-white overrited_onvid">
+ <p class="mb-0 p_on_vplayer">Star Walker</p>
+<img src="img/s_screen.svg" class="s_screen wf_vicon">
+</div>
+        <video preload="metadata" class="main-video ac_video" poster="img/series_preview.png">
+          <source src="img/video.mp4" size="480" type="video/mp4">
+
+
+          <track label="English" kind="subtitles" src="./How To Get Started With VSCode.vtt" srclang="en">
+          <track label="Urdu" kind="subtitles" src="./test.vtt" srclang="en">
+        </video>
+      </div>
+    </div>
+    
+  </section>
+
+   <!-- End Video -->
+
+<div class="container upcoming_watch_popup">
+ <div class="row">
+  <div class="col-lg-2 col-md-2 col-2 text-center p-0">
+  <img src="img/red_bell.svg" class="red_noti_big"><span class="film film_big"> FILM</span>
+  </div>
+  <div class="col-lg-8 col-md-8 col-8">
+    <p class="see_upcoming_p1 ">Comedy ~ Exciting ~ Drama</p>
+    <p class="see_upcoming_p2">Not more than 200 characters allowed here.
+What do viewers get when the incredible acting talents of Nancy Isime and Ini Dima-Okojie are featured in a film or series? Simple; blockbuster.  </p>
+  </div>
+  <div class="col-lg-2 col-md-2 col-2 text-center p-0">
+    <img src="img/up-arrow.svg" class="above_icon">
+  </div>
+ </div>
+ <hr class="upcoming_see_hr">
+ <br>
+</div>
+
+
+  <!-- ====Casts=== -->
+  <h5 class="casts">CASTS</h5>
+<div class="">
+  <div class="row casts_area_row">
+<div class="col-lg-2 col-md-2 col-3 p-0">
+  <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_1.png" alt="COSTS" data-toggle="modal" data-target=".actor_profile">
+  <div class="card-body">
+    <h6 class="card-title casts_name" data-toggle="modal" data-target=".actor_profile">Richard Moffat</h6>
+  </div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2 col-3 p-0">
+    <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_2.png" alt="COSTS" data-toggle="modal" data-target=".actor_profile">
+  <div class="card-body">
+    <h6 class="card-title casts_name" data-toggle="modal" data-target=".actor_profile">Rita Dominic</h6>
+  </div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2 col-3 p-0">
+    <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_3.png" alt="COSTS">
+  <div class="card-body">
+    <h6 class="card-title casts_name">Mike Ezuronye</h6>
+  </div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2 col-3 p-0">
+    <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_4.png" alt="COSTS">
+  <div class="card-body">
+    <h6 class="card-title casts_name">Genivieve Nnaji</h6>
+  </div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2 col-3 p-0">
+    <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_5.png" alt="COSTS">
+  <div class="card-body">
+    <h6 class="card-title casts_name">Eddels Bette</h6>
+  </div>
+</div>
+</div>
+
+
+<div class="col-lg-2 col-md-2 col-3 p-0">
+  <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_1.png" alt="COSTS">
+  <div class="card-body">
+    <h6 class="card-title casts_name">Richard Moffat</h6>
+  </div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2 col-3 p-0">
+    <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_2.png" alt="COSTS">
+  <div class="card-body">
+    <h6 class="card-title casts_name">Rita Dominic</h6>
+  </div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2 col-3 p-0">
+    <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_3.png" alt="COSTS">
+  <div class="card-body">
+    <h6 class="card-title casts_name">Mike Ezuronye</h6>
+  </div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2 col-3 p-0">
+    <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_4.png" alt="COSTS">
+  <div class="card-body">
+    <h6 class="card-title casts_name">Genivieve Nnaji</h6>
+  </div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2 col-3 p-0">
+    <div class="card costs_cards upcoming_casts_cards">
+  <img class="card-img-top" src="img/cast_5.png" alt="COSTS">
+  <div class="card-body">
+    <h6 class="card-title casts_name">Eddels Bette</h6>
+  </div>
+</div>
+</div>
+  </div>
+</div>
+
+ <hr class="upcoming_see_hr">
+
+  <div class="upcoming_related_div">
+<h5 class="casts mb-0">RELATED MOVIES</h5>
+<div class="Trending_area related_movies">
+<!-- Scrolling -->
+<div class="containr">
+    <div class="boxx5"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+    <div class="boxx5"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+    <div class="boxx5"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+    <div class="boxx5"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+    <div class="boxx5"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+    <div class="boxx5"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+    <div class="boxx5"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+     <div class="boxx5"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+      <div class="boxx5"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".bd-example-modal11-lg"></div>
+</div>
+<!-- End Scrolling -->
+  </div>
+
+
+</div>
+<div class="addon_movipre">
+<img src="img/upcoming-add.png" width="100%" class="upcoming_add mt-0">
+<span class="add_lable_live" style="left:4%">AD</span>
+<span class="add_lable_live upcom_buynowadd">Buy Now</span>
+</div>
+<div class="close_btin">
+<button class="close_upcom_btn"  id="vdeostop-close"  onclick="coloseVmodals()">Close</button>
+</div>
+
+
+</div>
+  </div>
+</div>
+  </div>
+<!-- ==================END Upcoming Details POPup============= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========================All POPUPs Start===================== -->
+
+
+<!-- ====Signup Start=== -->
+<!-- ============================================================== -->
+<div class="modal fade signup-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupsignup">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content dawoload_modal sm_modals_content">
+ <!-- ======Close btn=== -->
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_signupa()">
+</button>
+<!-- =====Logo==== -->
+<center><img src="img/biglogo.png" class="sm_popups_logo">
+</center>
+<p class="login_pera">Create an Account<br>
+and Start Watching your<br> Favorite Movies.</p>
+
+<!-- ======Sign Up Form=== -->
+<center>
+<form>
+    <input type="text" name="name" class="login_inputs" placeholder="Full Name"><p class="mb-3"></p>
+
+    <input type="tel" id="phon-number" pattern="[0-9]*" class="login_inputs intl-tel-input contact_input">
+
+<input type="Email" name="name" class="login_inputs" placeholder="Email">
+     <div style="position: relative;">
+    <input type="password" name="passsword" class="login_inputs" placeholder="Password" required="" name="password" id="password2">
+<img src="img/aye.svg" id="eye-icon2">
+</div>
+<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" class="sinup_checkbox">
+  <label for="vehicle1" class="lable_signup">Receive promotion emails</label>
+
+    <button type="submit" class="log_in_btn sinup_btn" onclick="close_signupa()"  data-toggle="modal" data-target=".verify_phone">Create an Account</button>
+    <a href="#" class="reset_pass" onclick="close_signupa()" data-toggle="modal" data-target=".siging-popup">Login</a>
+    <p class="aske_to_reset">If you already have a Reeplay Account</p>
+</form>
+</center>
+<!-- ====End signup Form=== -->
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ====Sign Up  PopupEnd== -->
+<!-- ================================================================ -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- =====================Verify Phone No======= -->
+<!-- ============================================================== -->
+
+
+<div class="modal fade verify_phone" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupverifyphone">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content account_modal sm_modals_content">
+
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_popupverifyphone()">
+</button>
+
+<div class="phone_vf_areaa">
+  <h4>Verify PHONE NUMBER</h4>
+  <br> 
+  <input type="password" name="vf_code" placeholder="*** - ***" class="pfv_code_input"><input type="button" value="Send Code" class="pfv_code_btn">
+  <button type="submit" class="log_in_btn verify_pass_btn" onclick="close_popupverifyphone()" data-toggle="modal" data-target=".verify_done">Verify</button>
+  <br>
+  <p class="text-white code_expiry">Code expires in 10 minuites</p>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ===================End Verify Phone No====== -->
+<!-- =============================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- ==============Verifcation SuccessFulll STR============= -->
+<!-- =============================================================== -->
+
+
+
+<div class="modal fade verify_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupverifdone">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content account_modal sm_modals_content">
+
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_verifydone()">
+</button>
+
+<div class="phone_vf_areaa verifydone">
+    
+    <img src="img/v_done.png" class="verifdon_png">
+
+  <h4>Verification<br>
+Successful</h4>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ===================End Verify Successfull====== -->
+<!-- =============================================================== -->
+
+
+
+
+
+<!-- ====Login Start=== -->
+<!-- ============================================================== -->
+<div class="modal fade siging-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupsignin">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content dawoload_modal sm_modals_content">
+ <!-- ======Close btn=== -->
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_signin()">
+</button>
+<!-- =====Logo==== -->
+<center><img src="img/biglogo.png" class="sm_popups_logo">
+</center>
+<p class="login_pera">Login to Watch the Action,<br>
+and Live Shows from your<br> Favorite Stars.</p>
+
+<!-- ======Sign Up Form=== -->
+<center>
+<form>
+
+<input type="Email" name="name" class="login_inputs login-in" placeholder="Email">
+     <div style="position: relative;">
+    <input type="password" name="passsword" class="login_inputs login-in" placeholder="Password" required="" name="password" id="password1">
+<img src="img/aye.svg" id="eye-icon1">
+</div>
+<br>
+
+    <button type="submit" class="log_in_btn sinup_btn login-btn">Login</button>
+    <button type="submit" class="log_in_btn sinup_btn login-btn signupbtn">Create a New Account</button>
+    <p class="aske_to_reset pb-0">Forgot your Password?</p>
+    <a href="#" class="reset_pass pt-2" onclick="close_signin()" data-toggle="modal" data-target=".reset_passpop">Reset it</a>
+    
+</form>
+</center>
+<!-- ====End signup Form=== -->
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ====Login Popup End== -->
+<!-- ================================================================ -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- Reset Pass PopUp==== -->
+<!-- =========================================================== -->
+
+<div class="modal fade reset_passpop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupreset">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content dawoload_modal sm_modals_content">
+ <!-- ======Close btn=== -->
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_resetpop()">
+</button>
+<!-- ======Reset Pass=== -->
+<div class="resetpass_area">
+
+  <h4>Reset your Password</h4>
+<center>
+<form>
+
+<input type="Email" name="name" class="login_inputs login-in" placeholder="Email">
+<br>
+<button type="button" class="log_in_btn sinup_btn login-btn"  onclick="close_resetpop()" data-toggle="modal" data-target=".reset_done">Reset Password</button>
+    
+</form>
+</center></div>
+<!-- ====End Reset === -->
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ================End Reset POPUP========= -->
+<!-- ============================================================= -->
+
+
+
+
+
+
+
+<!-- ===========================RESET DONE STR============== -->
+
+<div class="modal fade reset_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="resetdonepop">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content account_modal sm_modals_content">
+
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_resetdone()">
+</button>
+
+<div class="phone_vf_areaa verifydone">
+    
+    <img src="img/v_done.png" class="verifdon_png">
+
+  <h4>Password reset link<br>
+was sent to your email</h4>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ============================END RESET DONE============= -->
+<!-- =============================================================== -->
+
+
+
+
+<!-- ========================Profile Lock Start========= -->
+<!-- =============================================================== -->
+
+<div class="modal fade profile_lock" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="profilelockpop">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content account_modal sm_modals_content">
+
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_profilelock()">
+</button>
+<!-- Main -->
+
+<div class="lock_profile_area">
+<p class="pfl_p1">Welcome back <b>Edward</b></p>
+<p class="pfl_p2">Use pin to continue.</p>
+
+<!-- ==Inputs== -->
+</div>
+<div class="otp-container">
+  <input type="text" class="otp-input" maxlength="1" id="otp1" oninput="moveToNext(this, 'otp2')" onkeydown="moveToPrev(event, 'otp1', 'otp2')">
+  <input type="text" class="otp-input" maxlength="1" id="otp2" oninput="moveToNext(this, 'otp3')" onkeydown="moveToPrev(event, 'otp2', 'otp3')">
+  <input type="text" class="otp-input" maxlength="1" id="otp3" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(event, 'otp3', 'otp4')">
+  <input type="text" class="otp-input" maxlength="1" id="otp4" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(event, 'otp4', 'otp4')">
+</div>
+<!-- End Inputs -->
+<center>
+<hr class="pfl_hr">
+</center>
+<a href="#" class="pfl_porgot text-center">Forgot PIN?</a>
+
+
+<!-- End Main -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- ========================Profile Lock End===== -->
+<!-- ============================================================== -->
+
+
+<!-- Dailog and subscribe btns -->
+<a href="#" class="popups_hiden_btns" id="mydailogbtn" data-toggle="modal" data-target=".dailog_pop" data-backdrop="static">dailog</a>
+ <!-- sm dailog -->
+        <a href="#" class="popups_hiden_btns" id="smdailogbtn" data-toggle="modal" data-target=".aler_sm_login" data-backdrop="static">dailog</a>
+
+
+
+
+
+<!-- ============================================================== -->
+<!-- ==================Dailog POP Start================ -->
+
+<div class="modal fade dailog_pop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="dailogpopup">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content account_modal sm_modals_content">
+
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_dailogpop()">
+</button>
+<!-- ===Main Area=== -->
+
+<div class="dailog_pop_area">
+<img src="img/biglogo.png">
+<p class="dailpgpop1">You are not signed in.</p>
+<p class="dailpgpop2">Sign in or Register to enjoy<br>Premium Content on all your<br> devices.</p>
+<div class="dailog_pop_btns">
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-12 mt-2">
+      <button class="sign_in_dailog" onclick="close_dailogpop()"  data-toggle="modal" data-target=".siging-popup">Sign In</button>   
+    </div>
+    <div class="col-lg-6 col-md-6 col-12 mt-2">
+<button class="sign_up_dailog" onclick="close_dailogpop()"  data-toggle="modal" data-target=".signup-popup">Register</button>
+    </div>
+</div>
+</div>
+</div>
+</div></div></div>
+
+
+
+
+<!-- ========================End Dailog POP==== -->
+<!-- =============================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =======================Premium Popup====== -->
+<!-- ============================================================ -->
+
+
+
+<div class="modal fade premium_pop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="premiumpopup">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content account_modal sm_modals_content">
+
+  <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_premiumpop()">
+</button>
+<!-- ===Main Area=== -->
+
+<div class="dailog_pop_area text-center">
+<img src="img/biglogo.png">
+<p class="dailpgpop1">You don’t have an active <br>subscription</p>
+<p class="dailpgpop2"> This is a Premium content, you<br> must subscribe to watch.</p>
+<div class="mt-4">
+  
+    <button class="sign_up_dailog" onclick="close_premiumpop()">Subscribe</button>
+</div>
+</div>
+
+
+
+
+<!-- ===End Main Area==== -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- ==========End Premium Popup===== -->
+<!-- =========================================================== -->
+
+
+<!-- Watchlist modal -->
+<div class="modal fade my_watchlist" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mywatchlistpo">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content dawoload_modal logn_modals" style="background: rgba(36, 36, 36, 0.9); height:unset;">
+      <button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid poup_close_icon2" onclick="close_watchlistpop()">
+</button>
+<div class="container">
+ <div class="row mt-3">
+       <h6 class="dawoloads_heading watchlist_heading">My Watchlist</h6>
+   </div>
+   </div>
+ <!-- ======Watchlist=== -->
+ <div class="dawoload_popup_area container waatchlist_area">
+  
+
+<!-- ===row 1== -->
+<div class="row watchlist_rows">
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched1.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched2.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched3.png">
+ </div>
+</div>
+
+
+<!-- ===row 2== -->
+<div class="row watchlist_rows">
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched4.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched5.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched6.png">
+ </div>
+</div>
+
+
+<!-- ===row 3== -->
+<div class="row watchlist_rows">
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched7.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched8.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched1.png">
+ </div>
+</div>
+
+<!-- ===row 4== -->
+<div class="row watchlist_rows">
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched2.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched3.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched4.png">
+ </div>
+</div>
+
+<!-- ===row 5== -->
+<div class="row watchlist_rows">
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched5.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched6.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched7.png">
+ </div>
+</div>
+
+<!-- ===row 6== -->
+<div class="row watchlist_rows">
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched8.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched1.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched2.png">
+ </div>
+</div>
+
+<!-- ===row 7== -->
+<div class="row watchlist_rows">
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched3.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched4.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched5.png">
+ </div>
+</div>
+
+<!-- ===row 8== -->
+<div class="row watchlist_rows">
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched6.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched7.png">
+ </div>
+ <div class="col-lg-4 col-md-4 col-4 watchlist_cols">
+     <img src="img/watched8.png">
+ </div>
+</div>
+
+</div>
+<!-- =====AD== -->
+<div class="long_add_area">
+<img src="img/dawonload_ads.png" class="long_adds">
+<span class="add_lable_live lng_add">AD</span>
+</div>
+ <!-- ===Buttons== -->
+ <div class="dawoloading_lst_btns buy_adsc_btns">
+     <button class="dawoloading_lst_btn1 buy_now_add">Buy Now</button>
+     <center>
+     <hr class="dbtn_hr buyadd_hr">
+     </center>
+     <button class="dawoloading_lst_btn2 buy_add_closebtn" onclick="close_watchlistpop()">Close</button>
+ </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- =====================Actor Profile Popup========== -->
+<div class="modal fade actor_profile" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="actorpf">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content sm_modals_content actor_profile_modal">
+
+<button type="button" class="popup_close_btn" data-mdb-dismiss="modal">
+  <img src="img/close.svg" class="img-fluid actor_close_icon float-right" onclick="close_actor()">
+</button> 
+<!-- Main -->
+
+
+<!-- Carousel -->
+<div id="carouselExampleCaptions" class="carousel slide" style="position:relative;">
+
+  <div class="carousel-indicators mb-0">
+    
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+    <div class="actor_carousel_slides">&nbsp;</div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/actor.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block pb-0">
+        <h5 class="actor_heading1">ACTOR</h5>
+     <h2 class="actor_heading2">Richard Mofe</h2>
+      </div>
+    </div>
+    <div class="carousel-item mb-0">
+      <img src="img/actor.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        
+      </div>
+    </div>
+    <div class="carousel-item mb-0">
+      <img src="img/actor.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- End Carousel -->
+<!-- Details -->
+<div class="actor_details">
+<button class="act_fn_btn">FAN PAGE</button>
+<p>#2skidBette #enterpreneur #upcomingartistc<br>
+Editor | Developer | Talent | Music Artiste | Business<br>
+Ready to Pick the Dreams that chose Me.<br>
+Text characters must not be more than 5 lines <br>
+and must be min150 & max 250 characters.</p>
+
+<h2 class="actor_otheerMo">OTHER MOVIES FEATURED ON</h2>
+</div>
+<div class="actorother_movies">
+    <!-- Scrolling -->
+<div class="containr">
+    <div class="boxx_actor"><img src="img/m1.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+    <div class="boxx_actor"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+    <div class="boxx_actor"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+    <div class="boxx_actor"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+    <div class="boxx_actor"><img src="img/m5.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+    <div class="boxx_actor"><img src="img/m6.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+    <div class="boxx_actor"><img src="img/m2.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+     <div class="boxx_actor"><img src="img/m3.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+      <div class="boxx_actor"><img src="img/m4.png" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target=".hseries_preview"></div>
+</div>
+<!-- End Scrolling -->
+</div>
+<div class="long_add_area">
+<img src="img/dawonload_ads.png" class="long_adds">
+<span class="add_lable_live lng_add">AD</span>
+</div>
+ <!-- ===Buttons== -->
+ <div class="dawoloading_lst_btns buy_adsc_btns">
+     <button class="dawoloading_lst_btn1 buy_now_add">Buy Now</button>
+     <center>
+     <hr class="dbtn_hr buyadd_hr">
+     </center>
+     <button class="dawoloading_lst_btn2 buy_add_closebtn" onclick="close_actor()">Close</button>
+ </div>
+
+ 
+<!-- End Main -->
+    </div>
+  </div>
+</div>
+<!-- ===================End Actor Pf Popup=========== -->
+
+<!-- ==================EDN Open account in app -->
+<p href="account_view" data-toggle="modal" data-target=".opn_app_content" id="viewapp_conntent_btn" style="display:none;"></p>
+<!-- Oen Content in app -->
+<div class="modal fade opn_app_content smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="appcontent">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+<!-- content -->
+<div class="opne_c_app">
+  <img src="img/pop.jpg" class="open_capp_img">  
+  <p class="app_ac_pera">To watch Reeplay on your mobile,<br>
+click button below to open with app.</p>
+
+<button class="watch_now_btn opne_inapp_c appbtn" id="appbtn1"><img src="img/vd_cion.svg" />Open App</button><br>
+<p class="app_ac_close contentcsmbnt" onclick="close_appc_con()">close</p>
+</div>
+
+<!-- End content -->
+</div>
+</div>
+</div>
+
+
+<!-- ================End Open Content inn app============= -->
+
+<!-- ========= login alert on mobile phone======= -->
+<div class="modal fade aler_sm_login smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="smalertlogin">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+
+<!-- Mian content -->
+<div class="main_login_alert">
+    <img src="img/biglogo.png">
+    <p class="aler_santence">You are not signed in.</p>
+    <p class="aler_santence2">Sign in or Register to enjoy <br>
+Premium Content on all your <br>
+devices.</p>
+<a onclick="close_smallert()" data-toggle="modal" data-target=".siging_sm_popup">
+<button class="watch_now_btn">Sign In</button></a><br>
+<p class="app_ac_close" onclick="close_smallert()">close</p>
+
+</div>
+<!-- end -->
+</div>
+</div>
+</div>
+<!-- ===========End login Alert on mobile -->
+
+<!-- ==============login popup on sm=========== -->
+<div class="modal fade siging_sm_popup smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="smlogin">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+<!-- main contant -->
+<div class="login_sm_div">
+
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo usedforsm_biglogo" /></center>
+                    <p class="login_pera">
+                        Login to Watch the Action,<br />
+                        and Live Shows from your<br />
+                        Favorite Stars.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="Email" name="name" class="login_inputs login-in mt-2" placeholder="Email" />
+                            <div style="position: relative;">
+                                <input type="password" name="passsword" class="login_inputs login-in mt-3" placeholder="Password" required="" name="password" id="password3" /><img src="img/aye.svg" id="eye-icon3" />
+                            </div>
+                            <br />
+                            <button type="submit" class="log_in_btn sinup_btn login-btn mt-0">Login</button> <button type="button" class="log_in_btn sinup_btn login-btn signupbtn appbtn" id="appbtn2">Create a New Account</button>
+                            <p class="aske_to_reset pb-0">Forgot your Password?</p>
+                            <a class="reset_pass pt-2 appbtn" id="appbtn3">Reset it</a>
+                        </form>
+                        <p class="app_ac_close pb-0" onclick="close_smlogin()">close</p>
+                    </center>
+                    <!-- ====End signup Form=== -->
+</div>
+<!-- end main content -->
+</div>
+</div>
+</div>
+<!-- ===========End login popup========== -->
+<!-- =========================End All Popups======================== -->
+
+
+
+
+
+
+<!-- Bootstrap Js -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script src="js/upcoming.js"></script>
+<!-- Build For Tel=== -->
+ <script src="build/js/intlTelInput.js"></script>
+ <script>
+   // ======Sign Up See Password===
+        // 1
+ let eyeicon2 = document.getElementById('eye-icon2');
+  let password2 = document.getElementById('password2');
+ eyeicon2.onclick = function() {
+    if (password2.type == "password") {
+        password2.type = "text";
+       // eyeicon2.src = "img/hidden.png"; 
+    }else{
+password2.type = "password";
+// eyeicon2.src = "img/eye_icon.png";
+    }
+ }
+// 2
+ let eyeicon1 = document.getElementById('eye-icon1');
+  let password1 = document.getElementById('password1');
+ eyeicon1.onclick = function() {
+    if (password1.type == "password") {
+        password1.type = "text";
+       // eyeicon1.src = "img/hidden.png"; 
+    }else{
+password1.type = "password";
+// eyeicon2.src = "img/eye_icon.png";
+    }
+ }
+// 3
+ let eyeicon3 = document.getElementById('eye-icon3');
+  let password3 = document.getElementById('password3');
+ eyeicon3.onclick = function() {
+    if (password3.type == "password") {
+        password3.type = "text";
+       // eyeicon3.src = "img/hidden.png"; 
+    }else{
+password3.type = "password";
+// eyeicon3.src = "img/eye_icon.png";
+    }
+ }
+// =====contact input
+ var input = document.querySelector("#phon-number");
+  window.intlTelInput(input, {
+    initialCountry: "auto",
+    separateDialCode: true,
+    hiddenInput: "full_phone",
+    geoIpLookup: function(success, failure) {
+      $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+        var countryCode = (resp && resp.country) ? resp.country : "";
+        success(countryCode);
+      });
+    },
+    utilsScript: "path/to/utils.js"
+  });
+
+  var valid = window.intlTelInput.isValidNumber();
+if(!valid) {
+ document.write('wrong Number');
+}
+$('#phon-number').on('input', function () { 
+   this.value = this.value.replace(/[^0-9]/g,'');
+});
+
+
+ </script>
+  <!-- -====Video Player=== -->
+ <script src="js/videoscript.js"></script>
+ <script src="js/smjs.js"></script>
+<!-- Core Js -->
+<script src="js/script.js"></script>
+
+
+
+<script>
+ (window.onload = function () {
+         if (window.innerWidth > 425) {
+        var e = !1;
+        setTimeout(function () {
+            !e && ($(document.getElementById("mydailogbtn")).trigger("click"), (e = !0));
+        }, 2 * 60 * 1000 + 12 * 1000);
+    }else{
+   var e = !1;
+        setTimeout(function () {
+            !e && ($(document.getElementById("smdailogbtn")).trigger("click"), (e = !0));
+        }, 2 * 60 * 1000 + 12 * 1000);      
+    }
+    });
+
+function close_smallert() {
+    $("#smalertlogin").modal("hide");
+}
+function close_smlogin() {
+    $("#smlogin").modal("hide");
+}
+
+ function close_watchlistpop() {
+            $("#mywatchlistpo").modal('hide');
+        }
+
+// ===========Notify me=====
+
+const liveAddWishlistImages = document.querySelectorAll('.red_noti');
+
+const originalImagePath = 'img/upcoming_bell.svg';
+const newImagePath = 'img/red_bell.svg';
+
+liveAddWishlistImages.forEach((image) => {
+  image.addEventListener('click', () => {
+    const card = image.closest('.card');
+    const rednotiImage = card.querySelector('.red_noti.rednoti2');
+    console.log(rednotiImage); // add this line to check the value of rednotiImage
+    if (image.src.endsWith(originalImagePath)) {
+      image.src = newImagePath;
+      rednotiImage.src = newImagePath;
+    } else {
+      image.src = originalImagePath;
+      rednotiImage.src = originalImagePath;
+    }
+  });
+});
+
+ function close_actor() {
+            $("#actorpf").modal('hide');
+        }
+
+// ========Scroll Up BTn========
+ // Show the button when the user scrolls down 20px from the top of the document
+window.onscroll = function() {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 760 || document.documentElement.scrollTop > 760) {
+    document.getElementById("back-to-top-btn2").style.display = "block";
+  } else {
+    document.getElementById("back-to-top-btn2").style.display = "none";
+  }
+}
+
+// Scroll to the top of the document when the user clicks the button
+document.getElementById("back-to-top-btn2").addEventListener("click", function() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+});
+// Check user agent to determine the device type
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  var buttonsand = document.getElementsByClassName("appbtn");
+  for (var i = 0; i < buttonsand.length; i++) {
+    var buttonad = buttonsand[i];
+
+    if (/android/i.test(userAgent)) {
+      // Android device
+      var playStoreLink = "https://play.google.com/store/apps";
+      buttonad.onclick = function() {
+        window.location.href = playStoreLink;
+      };
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      // iOS device
+      var appStoreLink = "https://www.apple.com/app-store/";
+      buttonad.onclick = function() {
+        window.location.href = appStoreLink;
+      };
+    }
+  }
+
+</script>
+</div>
+</body>
+</html>

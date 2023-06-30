@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Reeplay</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Core Css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+        <!-- =====Multiple google fonts=== -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit|Oswald|Poppins|Roboto" />
+        <!-- ====Font Awesome=== -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+        <!-- =====Build Tel=-= -->
+        <link rel="stylesheet" type="text/css" href="build/css/intlTelInput.css" />
+        <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+        <style>
+            .donaite_live {
+                display: none !important;
+            }
+            .library_content {
+                text-align: center;
+            }
+            @media (max-width: 1315px) and (min-width: 992px) {
+                .library_content img {
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 30px;
+                }
+                .library_content {
+                    padding: 10px 20px;
+                }
+                .library_content .row {
+                    margin-bottom: 0px;
+                }
+            }
+            @media (max-width: 992px) {
+                .library_content img {
+                    width: 90%;
+                    height: auto;
+                    margin-bottom: 30px;
+                }
+                .library_content .row {
+                    margin-bottom: 0px;
+                }
+            }
+            @media (max-width: 600px) {
+                .library_content {
+                    padding: 10px 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+              <!-- Preloader -->
+        <div id="preloader">
+  <img src="img/loader.gif" alt="Preloader" />
+</div>
+
+<div id="websiteContent">
+        <!-- =========================Nav & Header==============\ -->
+        <div class="">
+            <!-- ====Nav=== -->
+            <div class="navbar_areaa"></div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container-fluid filuid_sm">
+                  <a class="navbar-brand" href="index.html"><img src="img/loogo.png" class="logo" /></a>
+                    <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon" style="background-image: url('img/manue.svg') !important;"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="live.html">Live</a></li>
+                            <li class="nav-item"><a class="nav-link" href="upcoming.html">Upcoming</a></li>
+                            <li class="nav-item"><a class="nav-link activenav" href="library.html">Library</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target=".my_watchlist" href="Watchlist">Watchlist</a></li>
+                        </ul>
+                        <form class="d-flex">
+                            <img src="img/search.svg" class="search_icon" id="search_icon" onclick="show_search()" />
+                            <span class="search_area" id="search_area">
+                                <button class="sbtn"><img src="img/search.svg" class="search_input_btn" /></button> <input type="text" name="search" class="search_input" placeholder="Titles, people, genres" />
+                            </span>
+                        </form>
+                       <a href="#" class="signup_btn none_sm" data-toggle="modal" data-target=".signup-popup">Sign Up</a>
+                        <a href="#" class="signup_btn for_sm smsigningonly" data-toggle="modal" data-target=".siging_sm_popup">Sign In</a>
+                        <!-- profile_lock-->
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- =====================Main Area================= --><!-- ====Library Selection==== -->
+        <div class="container col main_area_st">
+            <h2 class="library_heading">Library</h2>
+            <select class="library_selection">
+                <option value="Movies">Movies</option>
+                <option value="TV Series">TV Series</option>
+                <option value="Music Videos">Music Videos</option>
+                <option value="Kiddies">Kiddies</option>
+                <option value="Live Events">Live Events</option>
+                <option selected value="TV Channels">TV Channels</option>
+                <option value="Short Skits">Short Skits</option>
+                <option value="Documentary">Documentary</option>
+                <option value="" style="font-size: 5pt;" disabled>&nbsp;</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <select class="library_selection">
+                <option selected>All categories </option>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Horror">Horror</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Romance">Romance</option>
+                <option value="Crime">Crime</option>
+                <option value="Epic">Epic</option>
+                <option value="" style="font-size: 5pt;" disabled>&nbsp;</option>
+            </select>
+        </div>
+        <!-- ======Library Imgs -->
+        <div class="library_content">
+            <!-- Row 1 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 2 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 3 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 4 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 5 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 6 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 7 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 8 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 9 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+            <!-- Row 10 -->
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m3.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m2.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m6.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m4.png" /></div>
+                <div class="col-lg-2 col-md-4 col-6 p-1"><img src="img/m1.png" /></div>
+            </div>
+        </div>
+        <!-- ===Scroll Up Btn=== -->
+        <button id="back-to-top-btn" title="Back to top"><img src="img/right_arrow.svg" /></button>
+        <!-- =======================END Main Are================= --><!-- =========================All POPUPs Start===================== --><!-- ====Signup Start=== --><!-- ============================================================== -->
+        <div class="modal fade signup-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupsignup">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_signupa()" /></button>
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo" /></center>
+                    <p class="login_pera">
+                        Create an Account<br />
+                        and Start Watching your<br />
+                        Favorite Movies.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="text" name="name" class="login_inputs" placeholder="Full Name" />
+                            <p class="mb-3"></p>
+                            <input type="tel" id="phon-number" pattern="[0-9]*" class="login_inputs intl-tel-input contact_input" /><input type="Email" name="name" class="login_inputs" placeholder="Email" />
+                            <div style="position: relative;"><input type="password" name="passsword" class="login_inputs" placeholder="Password" required="" name="password" id="password2" /><img src="img/aye.svg" id="eye-icon2" /></div>
+                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" class="sinup_checkbox" /> <label for="vehicle1" class="lable_signup">Receive promotion emails</label>
+                            <button type="submit" class="log_in_btn sinup_btn" onclick="close_signupa()" data-toggle="modal" data-target=".verify_phone">Create an Account</button>
+                            <a href="#" class="reset_pass" onclick="close_signupa()" data-toggle="modal" data-target=".siging-popup">Login</a>
+                            <p class="aske_to_reset">If you already have a Reeplay Account</p>
+                        </form>
+                    </center>
+                    <!-- ====End signup Form=== -->
+                </div>
+            </div>
+        </div>
+        <!-- ====Sign Up PopupEnd== --><!-- ================================================================ --><!-- =====================Verify Phone No======= --><!-- ============================================================== -->
+        <div class="modal fade verify_phone" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupverifyphone">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_popupverifyphone()" /></button>
+                    <div class="phone_vf_areaa">
+                        <h4>Verify PHONE NUMBER</h4>
+                        <br />
+                        <input type="password" name="vf_code" placeholder="*** - ***" class="pfv_code_input" /><input type="button" value="Send Code" class="pfv_code_btn" />
+                        <button type="submit" class="log_in_btn verify_pass_btn" onclick="close_popupverifyphone()" data-toggle="modal" data-target=".verify_done">Verify</button> <br />
+                        <p class="text-white code_expiry">Code expires in 10 minuites</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===================End Verify Phone No====== --><!-- =============================================================== --><!-- ==============Verifcation SuccessFulll STR============= --><!-- =============================================================== -->
+        <div class="modal fade verify_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupverifdone">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_verifydone()" /></button>
+                    <div class="phone_vf_areaa verifydone">
+                        <img src="img/v_done.png" class="verifdon_png" />
+                        <h4>
+                            Verification<br />
+                            Successful
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===================End Verify Successfull====== --><!-- =============================================================== --><!-- ====Login Start=== --><!-- ============================================================== -->
+        <div class="modal fade siging-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupsignin">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_signin()" /></button>
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo" /></center>
+                    <p class="login_pera">
+                        Login to Watch the Action,<br />
+                        and Live Shows from your<br />
+                        Favorite Stars.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="Email" name="name" class="login_inputs login-in" placeholder="Email" />
+                            <div style="position: relative;">
+                                <input type="password" name="passsword" class="login_inputs login-in" placeholder="Password" required="" name="password" id="password1" /><img src="img/aye.svg" id="eye-icon1" />
+                            </div>
+                            <br />
+                            <button type="submit" class="log_in_btn sinup_btn login-btn">Login</button> <button type="submit" class="log_in_btn sinup_btn login-btn signupbtn">Create a New Account</button>
+                            <p class="aske_to_reset pb-0">Forgot your Password?</p>
+                            <a href="#" class="reset_pass pt-2" onclick="close_signin()" data-toggle="modal" data-target=".reset_passpop">Reset it</a>
+                        </form>
+                    </center>
+                    <!-- ====End signup Form=== -->
+                </div>
+            </div>
+        </div>
+        <!-- ====Login Popup End== --><!-- ================================================================ --><!-- Reset Pass PopUp==== --><!-- =========================================================== -->
+        <div class="modal fade reset_passpop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mypopupreset">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal sm_modals_content">
+                    <!-- ======Close btn=== -->
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_resetpop()" /></button>
+                    <!-- ======Reset Pass=== -->
+                    <div class="resetpass_area">
+                        <h4>Reset your Password</h4>
+                        <center>
+                            <form>
+                                <input type="Email" name="name" class="login_inputs login-in" placeholder="Email" /><br />
+                                <button type="button" class="log_in_btn sinup_btn login-btn" onclick="close_resetpop()" data-toggle="modal" data-target=".reset_done">Reset Password</button>
+                            </form>
+                        </center>
+                    </div>
+                    <!-- ====End Reset === -->
+                </div>
+            </div>
+        </div>
+        <!-- ================End Reset POPUP========= --><!-- ============================================================= --><!-- ===========================RESET DONE STR============== -->
+        <div class="modal fade reset_done" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="resetdonepop">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_resetdone()" /></button>
+                    <div class="phone_vf_areaa verifydone">
+                        <img src="img/v_done.png" class="verifdon_png" />
+                        <h4>
+                            Password reset link<br />
+                            was sent to your email
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================END RESET DONE============= --><!-- =============================================================== --><!-- ========================Profile Lock Start========= --><!-- =============================================================== -->
+        <div class="modal fade profile_lock" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="profilelockpop">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right login_close" onclick="close_profilelock()" /></button>
+                    <!-- Main -->
+                    <div class="lock_profile_area">
+                        <p class="pfl_p1">Welcome back <b>Edward</b></p>
+                        <p class="pfl_p2">Use pin to continue.</p>
+                        <!-- ==Inputs== -->
+                    </div>
+                    <div class="otp-container">
+                        <input type="text" class="otp-input" maxlength="1" id="otp1" oninput="moveToNext(this, 'otp2')" onkeydown="moveToPrev(event, 'otp1', 'otp2')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp2" oninput="moveToNext(this, 'otp3')" onkeydown="moveToPrev(event, 'otp2', 'otp3')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp3" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(event, 'otp3', 'otp4')" />
+                        <input type="text" class="otp-input" maxlength="1" id="otp4" oninput="moveToNext(this, 'otp4')" onkeydown="moveToPrev(event, 'otp4', 'otp4')" />
+                    </div>
+                    <!-- End Inputs -->
+                    <center><hr class="pfl_hr" /></center>
+                    <a href="#" class="pfl_porgot text-center">Forgot PIN?</a>
+                    <!-- End Main -->
+                </div>
+            </div>
+        </div>
+        <!-- ========================Profile Lock End===== --><!-- ============================================================== --><!-- Dailog and subscribe btns -->
+        <a href="#" class="popups_hiden_btns" id="mydailogbtn" data-toggle="modal" data-target=".dailog_pop" data-backdrop="static">dailog</a>
+         <!-- sm dailog -->
+        <a href="#" class="popups_hiden_btns" id="smdailogbtn" data-toggle="modal" data-target=".aler_sm_login" data-backdrop="static">dailog</a>
+        <!-- ============================================================== --><!-- ==================Dailog POP Start================ -->
+        <div class="modal fade dailog_pop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="dailogpopup">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_dailogpop()" /></button>
+                    <!-- ===Main Area=== -->
+                    <div class="dailog_pop_area">
+                        <img src="img/biglogo.png" />
+                        <p class="dailpgpop1">You are not signed in.</p>
+                        <p class="dailpgpop2">
+                            Sign in or Register to enjoy<br />
+                            Premium Content on all your<br />
+                            devices.
+                        </p>
+                        <div class="dailog_pop_btns">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12 mt-2"><button class="sign_in_dailog" onclick="close_dailogpop()" data-toggle="modal" data-target=".siging-popup">Sign In</button></div>
+                                <div class="col-lg-6 col-md-6 col-12 mt-2"><button class="sign_up_dailog" onclick="close_dailogpop()" data-toggle="modal" data-target=".signup-popup">Register</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ========================End Dailog POP==== --><!-- =============================================================== --><!-- =======================Premium Popup====== --><!-- ============================================================ -->
+        <div class="modal fade premium_pop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="premiumpopup">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content account_modal sm_modals_content">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon float-right" onclick="close_premiumpop()" /></button>
+                    <!-- ===Main Area=== -->
+                    <div class="dailog_pop_area">
+                        <img src="img/biglogo.png" />
+                        <p class="dailpgpop1">
+                            You don’t have an active <br />
+                            subscription
+                        </p>
+                        <p class="dailpgpop2">
+                            This is a Premium content, you<br />
+                            must subscribe to watch.
+                        </p>
+                        <div class="dailog_pop_btns subscribebtn"><button class="sign_up_dailog" onclick="close_premiumpop()">Subscribe</button></div>
+                    </div>
+                    <!-- ===End Main Area==== -->
+                </div>
+            </div>
+        </div>
+        <!-- ==========End Premium Popup===== --><!-- =========================================================== --><!-- Watchlist modal -->
+        <div class="modal fade my_watchlist" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="mywatchlistpo">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content dawoload_modal logn_modals" style="background: rgba(36, 36, 36, 0.9); height: unset;">
+                    <button type="button" class="popup_close_btn" data-mdb-dismiss="modal"><img src="img/close.svg" class="img-fluid poup_close_icon2" onclick="close_watchlistpop()" /></button>
+                    <div class="container">
+                        <div class="row mt-3"><h6 class="dawoloads_heading watchlist_heading">My Watchlist</h6></div>
+                    </div>
+                    <!-- ======Watchlist=== -->
+                    <div class="dawoload_popup_area container waatchlist_area">
+                        <!-- ===row 1== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                        </div>
+                        <!-- ===row 2== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                        </div>
+                        <!-- ===row 3== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                        </div>
+                        <!-- ===row 4== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                        </div>
+                        <!-- ===row 5== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                        </div>
+                        <!-- ===row 6== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched1.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched2.png" /></div>
+                        </div>
+                        <!-- ===row 7== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched3.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched4.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched5.png" /></div>
+                        </div>
+                        <!-- ===row 8== -->
+                        <div class="row watchlist_rows">
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched6.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched7.png" /></div>
+                            <div class="col-lg-4 col-md-4 col-4 watchlist_cols"><img src="img/watched8.png" /></div>
+                        </div>
+                    </div>
+                    <!-- =====AD== -->
+                    <div class="long_add_area"><img src="img/dawonload_ads.png" class="long_adds" /><span class="add_lable_live lng_add">AD</span></div>
+                    <!-- ===Buttons== -->
+                    <div class="dawoloading_lst_btns buy_adsc_btns">
+                        <button class="dawoloading_lst_btn1 buy_now_add">Buy Now</button>
+                        <center><hr class="dbtn_hr buyadd_hr" /></center>
+                        <button class="dawoloading_lst_btn2 buy_add_closebtn" onclick="close_watchlistpop()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================EDN Open account in app -->
+<p href="account_view" data-toggle="modal" data-target=".opn_app_content" id="viewapp_conntent_btn" style="display:none;"></p>
+<!-- Oen Content in app -->
+<div class="modal fade opn_app_content smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="appcontent">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+<!-- content -->
+<div class="opne_c_app">
+  <img src="img/pop.jpg" class="open_capp_img">  
+  <p class="app_ac_pera">To watch Reeplay on your mobile,<br>
+click button below to open with app.</p>
+
+<button class="watch_now_btn opne_inapp_c appbtn" id="appbtn1"><img src="img/vd_cion.svg" />Open App</button><br>
+<p class="app_ac_close contentcsmbnt" onclick="close_appc_con()">close</p>
+</div>
+
+<!-- End content -->
+</div>
+</div>
+</div>
+
+
+<!-- ========= login alert on mobile phone======= -->
+<div class="modal fade aler_sm_login smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="smalertlogin">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+
+<!-- Mian content -->
+<div class="main_login_alert">
+    <img src="img/biglogo.png">
+    <p class="aler_santence">You are not signed in.</p>
+    <p class="aler_santence2">Sign in or Register to enjoy <br>
+Premium Content on all your <br>
+devices.</p>
+<a onclick="close_smallert()" data-toggle="modal" data-target=".siging_sm_popup">
+<button class="watch_now_btn">Sign In</button></a><br>
+<p class="app_ac_close" onclick="close_smallert()">close</p>
+
+</div>
+<!-- end -->
+</div>
+</div>
+</div>
+<!-- ===========End login Alert on mobile -->
+
+<!-- ==============login popup on sm=========== -->
+<div class="modal fade siging_sm_popup smmoodd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="smlogin">
+  <div class="modal-dialog modal-lg modal-dialog-centered m-0">
+<div class="modal-content small_modals">
+<!-- main contant -->
+<div class="login_sm_div">
+
+                    <!-- =====Logo==== -->
+                    <center><img src="img/biglogo.png" class="sm_popups_logo usedforsm_biglogo" /></center>
+                    <p class="login_pera">
+                        Login to Watch the Action,<br />
+                        and Live Shows from your<br />
+                        Favorite Stars.
+                    </p>
+                    <!-- ======Sign Up Form=== -->
+                    <center>
+                        <form>
+                            <input type="Email" name="name" class="login_inputs login-in mt-2" placeholder="Email" />
+                            <div style="position: relative;">
+                                <input type="password" name="passsword" class="login_inputs login-in mt-3" placeholder="Password" required="" name="password" id="password3" /><img src="img/aye.svg" id="eye-icon3" />
+                            </div>
+                            <br />
+                            <button type="submit" class="log_in_btn sinup_btn login-btn mt-0">Login</button> <button type="button" class="log_in_btn sinup_btn login-btn signupbtn appbtn" id="appbtn2">Create a New Account</button></a>
+                            <p class="aske_to_reset pb-0">Forgot your Password?</p>
+                            <a class="reset_pass pt-2 appbtn" id="appbtn3">Reset it</a>
+                        </form>
+                        <p class="app_ac_close pb-0" onclick="close_smlogin()">close</p>
+                    </center>
+                    <!-- ====End signup Form=== -->
+</div>
+<!-- end main content -->
+</div>
+</div>
+</div>
+<!-- ===========End login popup========== -->
+
+<!-- ================End Open Content inn app============= -->
+
+        <!-- =========================End All Popups======================== --><!-- Bootstrap Js -->
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+        <!-- Build For Tel=== -->
+        <script src="build/js/intlTelInput.js"></script>
+        <!-- Core Js -->
+         <script src="js/script.js"></script>
+         <script src="js/smjs.js"></script>
+        <script src="js/library.js"></script>
+    </div>
+  <script>
+let eyeicon3 = document.getElementById("eye-icon3"),
+    password3 = document.getElementById("password3");
+eyeicon3.onclick = function () {
+    "password" == password3.type ? (password3.type = "text") : (password3.type = "password");
+};
+
+    let eyeicon2 = document.getElementById("eye-icon2"),
+    password2 = document.getElementById("password2");
+eyeicon2.onclick = function () {
+    "password" == password2.type ? (password2.type = "text") : (password2.type = "password");
+};
+let eyeicon1 = document.getElementById("eye-icon1"),
+    password1 = document.getElementById("password1");
+eyeicon1.onclick = function () {
+    "password" == password1.type ? (password1.type = "text") : (password1.type = "password");
+};
+
+      // Get the button element
+var backButton = document.querySelector("#back-to-top-btn");
+
+// Show the button when page is scrolled
+window.addEventListener("scroll", function() {
+  if (window.pageYOffset > 720) {
+    backButton.style.display = "block";
+  } else {
+    backButton.style.display = "none";
+  }
+});
+
+// Scroll to top when button is clicked
+backButton.addEventListener("click", function() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Check user agent to determine the device type
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  var buttonsand = document.getElementsByClassName("appbtn");
+  for (var i = 0; i < buttonsand.length; i++) {
+    var buttonad = buttonsand[i];
+
+    if (/android/i.test(userAgent)) {
+      // Android device
+      var playStoreLink = "https://play.google.com/store/apps";
+      buttonad.onclick = function() {
+        window.location.href = playStoreLink;
+      };
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      // iOS device
+      var appStoreLink = "https://itunes.apple.com/app";
+      buttonad.onclick = function() {
+        window.location.href = appStoreLink;
+      };
+    }
+  }
+  </script>
+    </body>
+</html>
